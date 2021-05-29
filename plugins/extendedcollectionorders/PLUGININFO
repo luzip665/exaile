@@ -1,0 +1,5 @@
+Version='0.1'
+Authors=['']
+Name=_('Extended Collection Orders')
+Description=_('Facilitates categorizing your music by managing the grouping/category tag in audio files')
+Category=_('Tagging')
