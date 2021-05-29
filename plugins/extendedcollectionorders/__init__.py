@@ -1,6 +1,7 @@
 from gi.repository import Gtk
 from xl import event, settings
 from xl.nls import gettext as _
+from xlgui.collection import *
 
 
 class ExtendedCollectionOrders:
@@ -13,6 +14,7 @@ class ExtendedCollectionOrders:
         """
         Called on startup of exaile
         """
+        self.exaile = exaile
         pass
 
     def disable(self, exaile):
@@ -23,6 +25,7 @@ class ExtendedCollectionOrders:
         Called when the gui is loaded
         Before that there is no status bar
         """
+        target = self.exaile.gui.panel_notebook.panels['collection'].panel.orders
         pass
 
     def on_exaile_loaded(self):
