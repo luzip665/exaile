@@ -3,6 +3,7 @@ from xl import event, settings
 from xl.nls import gettext as _
 from xlgui.panel.collection import Order
 
+from . import extendedcollectionorders_prefs
 
 class ExtendedCollectionOrders:
     """
@@ -19,6 +20,7 @@ class ExtendedCollectionOrders:
         """
         self.exaile = exaile
         self.last_active_view = settings.get_option('gui/collection_active_view')
+
         pass
 
     def disable(self, exaile):
@@ -31,7 +33,7 @@ class ExtendedCollectionOrders:
         """
         self.collection_panel = self.exaile.gui.panel_notebook.panels['collection'].panel
 
-        new_order = Order(_("Genre - Artist - Date"),
+        new_order = Order(_("Genre - Artist - By Date"),
           (
               'genre', #Tree Level 1
               'artist', # Tree Level 2
@@ -50,5 +52,7 @@ class ExtendedCollectionOrders:
         self.collection_panel.repopulate_choices()
         pass
 
+    def get_preferences_pane(self):
+        return extendedcollectionorders_prefs
 
 plugin_class = ExtendedCollectionOrders
