@@ -44,8 +44,21 @@ class ExtendedCollectionOrders:
                )
           )
         )
-
         self.collection_panel.orders.append(new_order)
+
+        new_order = Order(_("Artist - Genre - By Date"),
+          (
+              'artist', # Tree Level 1
+              'genre', # Tree Level 2
+              (
+                  ('date', 'title'), # Sorting
+                  "$date - $title", # Track display
+                  ("title", 'date'), # Search fields
+               )
+          )
+        )
+        self.collection_panel.orders.append(new_order)
+
         settings.set_option('gui/collection_active_view', self.last_active_view)
 
     def on_exaile_loaded(self):
