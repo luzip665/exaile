@@ -148,6 +148,8 @@ class AutoScrollTreeView(Gtk.TreeView):
         self.__autoscroll_timeout_id = None
         self.__current_vertical_scroll = None
 
+        self.set_grid_lines(Gtk.TreeViewGridLines.BOTH)
+
         self.connect("drag-motion", self._on_drag_motion)
         self.connect("drag-leave", self._on_drag_leave)
         self.connect("size-allocate", self._on_size_allocate)

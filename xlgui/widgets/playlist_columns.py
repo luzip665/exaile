@@ -96,6 +96,8 @@ class Column(Gtk.TreeViewColumn):
         self.set_sizing(Gtk.TreeViewColumnSizing.FIXED)  # needed for fixed-height mode
         self.set_sort_order(Gtk.SortType.DESCENDING)
 
+        self.set_spacing(0)
+
         # hack to allow button press events on the header to be detected
         self.set_widget(Gtk.Label(label=self.display))
 
