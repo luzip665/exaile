@@ -286,6 +286,9 @@ class Main:
 
     def on_gui_loaded(self, event, object, nothing):
 
+        if not settings.get_option('gui/show_status_bar', True):
+            self.builder.get_object('status_bar').hide()
+
         # This has to be idle_add so that plugin panels can be configured
         GLib.idle_add(self.panel_notebook.on_gui_loaded)
 
