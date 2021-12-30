@@ -308,9 +308,9 @@ class TrackInfoPane(Gtk.Bin):
         Updates the info pane on tag changes
         """
         if (
-            self.__player is not None
-            and not self.__player.is_stopped()
-            and track is self.__track
+                self.__player is not None
+                and not self.__player.is_stopped()
+                and track is self.__track
         ):
             self.set_track(track)
 
@@ -530,13 +530,13 @@ class Statusbar:
         Initialises the status bar
         """
         self.status_bar = status_bar
+
+        self.substitution_playlist_count = '${playlist_count:selection=override, suffix= }'
+        self.substitution_playlist_duration = '${playlist_duration:selection=override, format=long, prefix=(, suffix=)\\, }'
+        self.substitution_collection_count = '$collection_count'
+
         self.formatter = StatusbarTextFormatter(
-            settings.get_option(
-                'gui/statusbar_info_format',
-                '${playlist_count:selection=override, suffix= }'
-                '${playlist_duration:selection=override, format=long, prefix=(, suffix=)\\, }'
-                '$collection_count',
-            )
+            settings.get_option('gui/statusbar_info_format', self._get_substitutions())
         )
 
         self.info_label = Gtk.Label()
@@ -550,6 +550,34 @@ class Statusbar:
 
         event.add_callback(self._on_option_set, "gui_option_set")
 
+    def _get_substitutions(self):
+        substitution_playlist_count = '${playlist_count:selection=override, suffix= }'
+        substitution_playlist_duration = '${playlist_duration:selection=override, format=long, prefix=(, suffix=)\\, }'
+        substitution_collection_count = '$collection_count'
+
+        show_playlist_count = settings.get_option('gui/show_status_bar_count_tracks_in_playlist', True)
+        show_playlist_duration = settings.get_option('gui/show_status_bar_time_in_playlist', True)
+        show_collection_count = settings.get_option('gui/show_status_bar_collection_count', True)
+
+        sub = ''
+
+        if show_playlist_count:
+            sub = sub + substitution_playlist_count
+
+        if show_playlist_count and show_playlist_duration:
+            sub = sub + ' ${playlist_duration:selection=override, format=long, prefix=(, suffix=) }'
+
+        elif not show_playlist_count and show_playlist_duration:
+            sub = sub + '${playlist_duration:selection=override, format=long, prefix=, suffix= }'
+
+        if show_collection_count and (show_playlist_count or show_playlist_duration):
+            sub = sub + ', '
+
+        if show_collection_count:
+            sub = sub + substitution_collection_count
+
+        return sub
+
     def _on_option_set(self, name, object, option: str):
         if not option in [
             'gui/show_status_bar_collection_count',
@@ -558,6 +586,11 @@ class Statusbar:
         ]:
             return
         print('option_set ' + option)
+
+        self.formatter = StatusbarTextFormatter(
+            settings.get_option('gui/statusbar_info_format', self._get_substitutions())
+        )
+
         self.update_info()
 
     def set_status(self, status, timeout=0):
