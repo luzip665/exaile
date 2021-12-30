@@ -382,7 +382,7 @@
         </child>
         <child>
           <object class="GtkCheckButton" id="gui/show_status_bar_collection_count">
-            <property name="label" translatable="yes">Show Status Bar</property>
+            <property name="label" translatable="yes">Show Total</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -397,7 +397,7 @@
         </child>
         <child>
           <object class="GtkCheckButton" id="gui/show_status_bar_count_tracks_in_playlist">
-            <property name="label" translatable="yes">Show Status Bar</property>
+            <property name="label" translatable="yes">Show Track count</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
@@ -412,7 +412,7 @@
         </child>
         <child>
           <object class="GtkCheckButton" id="gui/show_status_bar_time_in_playlist">
-            <property name="label" translatable="yes">Show Status Bar</property>
+            <property name="label" translatable="yes">Show Time</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>

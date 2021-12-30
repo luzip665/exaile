@@ -412,6 +412,8 @@ class StatusbarTextFormatter(formatter.Formatter):
         """
         Retrieves the collection count
         """
+        if not settings.get_option('gui/show_status_bar_collection_count', True):
+            return ''
         return _('%d in collection') % main.exaile().collection.get_count()
 
     def get_playlist_count(self, selection='none'):
@@ -424,6 +426,9 @@ class StatusbarTextFormatter(formatter.Formatter):
             playlist count otherwise, 'only' for selection count only
         :type selection: string
         """
+        if not settings.get_option('gui/show_status_bar_count_tracks_in_playlist', True):
+            return ''
+
         page = xlgui.main.get_selected_page()
 
         if not isinstance(page, playlist.PlaylistPage):
@@ -475,6 +480,9 @@ class StatusbarTextFormatter(formatter.Formatter):
             playlist count otherwise, 'only' for selection count only
         :type selection: string
         """
+        if not settings.get_option('gui/show_status_bar_time_in_playlist', True):
+            return ''
+
         page = xlgui.main.get_selected_page()
 
         if not isinstance(page, playlist.PlaylistPage):
@@ -540,6 +548,18 @@ class Statusbar:
         self.context_id = self.status_bar.get_context_id('status')
         self.message_ids = []
 
+        event.add_callback(self._on_option_set, "gui_option_set")
+
+    def _on_option_set(self, name, object, option: str):
+        if not option in [
+            'gui/show_status_bar_collection_count',
+            'gui/show_status_bar_count_tracks_in_playlist',
+            'gui/show_status_bar_time_in_playlist'
+        ]:
+            return
+        print('option_set ' + option)
+        self.update_info()
+
     def set_status(self, status, timeout=0):
         """
         Sets the status message
@@ -567,7 +587,18 @@ class Statusbar:
         """
         Updates the info label text
         """
+        if settings.get_option('gui/show_status_bar', True):
+            self.status_bar.show()
+        else:
+            self.status_bar.hide()
+
         self.info_label.set_label(self.formatter.format())
+
+    def show(self):
+        self.status_bar.show()
+
+    def hide(self):
+        self.status_bar.hide()
 
 
 # TODO: Check if we can get a progress indicator in here somehow

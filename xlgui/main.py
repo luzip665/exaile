@@ -359,6 +359,7 @@ class MainWindow(GObject.GObject):
         )
 
         self.statusbar = info.Statusbar(self.builder.get_object('status_bar'))
+
         event.add_ui_callback(self.on_exaile_loaded, 'exaile_loaded')
 
     def _connect_events(self):
@@ -403,6 +404,7 @@ class MainWindow(GObject.GObject):
         # Settings
         self._on_option_set('gui_option_set', settings, 'gui/show_info_area')
         self._on_option_set('gui_option_set', settings, 'gui/show_info_area_covers')
+        self._on_option_set('gui_option_set', settings, 'gui/show_status_bar')
         event.add_ui_callback(self._on_option_set, 'option_set')
 
     def _connect_panel_events(self):
@@ -964,6 +966,12 @@ class MainWindow(GObject.GObject):
 
         elif option == 'gui/gtk_dark_hint':
             self._update_dark_hint()
+
+        elif option == 'gui/show_status_bar':
+            if not settings.get_option('gui/show_status_bar', True):
+                self.statusbar.hide()
+            else:
+                self.statusbar.show()
 
     def _on_volume_key(self, is_up):
         diff = int(
