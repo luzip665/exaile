@@ -531,10 +531,6 @@ class Statusbar:
         """
         self.status_bar = status_bar
 
-        self.substitution_playlist_count = '${playlist_count:selection=override, suffix= }'
-        self.substitution_playlist_duration = '${playlist_duration:selection=override, format=long, prefix=(, suffix=)\\, }'
-        self.substitution_collection_count = '$collection_count'
-
         self.formatter = StatusbarTextFormatter(
             settings.get_option('gui/statusbar_info_format', self._get_substitutions())
         )
@@ -550,10 +546,7 @@ class Statusbar:
 
         event.add_callback(self._on_option_set, "gui_option_set")
 
-    def _get_substitutions(self):
-        substitution_playlist_count = '${playlist_count:selection=override, suffix= }'
-        substitution_playlist_duration = '${playlist_duration:selection=override, format=long, prefix=(, suffix=)\\, }'
-        substitution_collection_count = '$collection_count'
+    def _get_substitutions(self) -> str:
 
         show_playlist_count = settings.get_option('gui/show_status_bar_count_tracks_in_playlist', True)
         show_playlist_duration = settings.get_option('gui/show_status_bar_time_in_playlist', True)
@@ -562,19 +555,19 @@ class Statusbar:
         sub = ''
 
         if show_playlist_count:
-            sub = sub + substitution_playlist_count
+            sub = sub + '${playlist_count:selection=override}'
 
         if show_playlist_count and show_playlist_duration:
-            sub = sub + ' ${playlist_duration:selection=override, format=long, prefix=(, suffix=) }'
+            sub = sub + ' ${playlist_duration:selection=override, format=long, prefix=(, suffix=), pad=0 }'
 
         elif not show_playlist_count and show_playlist_duration:
-            sub = sub + '${playlist_duration:selection=override, format=long, prefix=, suffix= }'
+            sub = sub + '${playlist_duration:selection=override, format=long, pad=0 }'
 
         if show_collection_count and (show_playlist_count or show_playlist_duration):
-            sub = sub + ', '
+            sub = sub.rstrip() + ', '
 
         if show_collection_count:
-            sub = sub + substitution_collection_count
+            sub = sub + '$collection_count'
 
         return sub
 
@@ -585,7 +578,6 @@ class Statusbar:
             'gui/show_status_bar_time_in_playlist'
         ]:
             return
-        print('option_set ' + option)
 
         self.formatter = StatusbarTextFormatter(
             settings.get_option('gui/statusbar_info_format', self._get_substitutions())
