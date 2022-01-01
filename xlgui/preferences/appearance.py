@@ -159,7 +159,7 @@ class ShowStatusBar(widgets.CheckPreference):
     name = 'gui/show_status_bar'
 
 class ShowStatusBarCollectionCount(widgets.CheckPreference, widgets.CheckConditional):
-    default = False
+    default = True
     name = 'gui/show_status_bar_collection_count'
     condition_preference_name = 'gui/show_status_bar'
 
@@ -168,7 +168,7 @@ class ShowStatusBarCollectionCount(widgets.CheckPreference, widgets.CheckConditi
         widgets.CheckConditional.__init__(self)
 
 class ShowStatusBarCountTracksInPlaylist(widgets.CheckPreference, widgets.CheckConditional):
-    default = False
+    default = True
     name = 'gui/show_status_bar_count_tracks_in_playlist'
     condition_preference_name = 'gui/show_status_bar'
 
@@ -177,7 +177,7 @@ class ShowStatusBarCountTracksInPlaylist(widgets.CheckPreference, widgets.CheckC
         widgets.CheckConditional.__init__(self)
 
 class ShowStatusBarTimeInPlaylist(widgets.CheckPreference, widgets.CheckConditional):
-    default = False
+    default = True
     name = 'gui/show_status_bar_time_in_playlist'
     condition_preference_name = 'gui/show_status_bar'
 

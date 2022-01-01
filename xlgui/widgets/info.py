@@ -531,9 +531,7 @@ class Statusbar:
         """
         self.status_bar = status_bar
 
-        self.formatter = StatusbarTextFormatter(
-            settings.get_option('gui/statusbar_info_format', self._get_substitutions())
-        )
+        self.formatter = StatusbarTextFormatter(self._get_substitutions())
 
         self.info_label = Gtk.Label()
 
@@ -548,11 +546,14 @@ class Statusbar:
 
     def _get_substitutions(self) -> str:
 
+        sub = settings.get_option('gui/statusbar_info_format', '')
+
+        if sub:
+            return sub
+
         show_playlist_count = settings.get_option('gui/show_status_bar_count_tracks_in_playlist', True)
         show_playlist_duration = settings.get_option('gui/show_status_bar_time_in_playlist', True)
         show_collection_count = settings.get_option('gui/show_status_bar_collection_count', True)
-
-        sub = ''
 
         if show_playlist_count:
             sub = sub + '${playlist_count:selection=override}'
@@ -579,9 +580,7 @@ class Statusbar:
         ]:
             return
 
-        self.formatter = StatusbarTextFormatter(
-            settings.get_option('gui/statusbar_info_format', self._get_substitutions())
-        )
+        self.formatter = StatusbarTextFormatter(self._get_substitutions())
 
         self.update_info()
 
