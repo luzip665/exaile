@@ -257,12 +257,7 @@ class MainWindow(GObject.GObject):
         guiutil.gtk_widget_replace(self.builder.get_object('info_area'), self.info_area)
 
         self.statusbar = MainWindowStatusBarPane(player.PLAYER)
-        # self.statusbar.set_auto_update(True)
-        # self.statusbar.set_border_width(3)
-        # self.statusbar.set_no_show_all(True)
         guiutil.gtk_widget_replace(self.builder.get_object('status_bar'), self.statusbar)
-
-        # self.statusbar = info.Statusbar(self.builder.get_object('status_bar'))
 
         self.volume_control = playback.VolumeControl(player.PLAYER)
         self.info_area.get_action_area().pack_end(self.volume_control, False, False, 0)
@@ -1297,6 +1292,7 @@ class MainWindowStatusBarPane(Gtk.Statusbar, info.Statusbar, providers.ProviderH
         self.__player = player
         self.widget_area = Gtk.Box()
 
+        self.set_halign(Gtk.Align.END)
         self.pack_start(self.widget_area, False, True, 0)
         self.reorder_child(self.widget_area, 0)
 
