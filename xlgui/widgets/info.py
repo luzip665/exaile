@@ -33,7 +33,7 @@ from xl import event, formatter, main, settings, xdg
 from xl.nls import gettext as _
 import xlgui
 from xlgui import cover, guiutil
-from xlgui.widgets import playlist
+from xlgui.widgets import playlist, queue
 from xlgui.widgets.playback import PlaybackProgressBar
 
 
@@ -431,7 +431,7 @@ class StatusbarTextFormatter(formatter.Formatter):
 
         page = xlgui.main.get_selected_page()
 
-        if not isinstance(page, playlist.PlaylistPage):
+        if not isinstance(page, playlist.PlaylistPage) and not isinstance(page, queue.QueuePage):
             return ''
 
         playlist_count = len(page.playlist)
@@ -485,7 +485,7 @@ class StatusbarTextFormatter(formatter.Formatter):
 
         page = xlgui.main.get_selected_page()
 
-        if not isinstance(page, playlist.PlaylistPage):
+        if not isinstance(page, playlist.PlaylistPage) and not isinstance(page, queue.QueuePage):
             return ''
 
         playlist_duration = sum(t.get_tag_raw('__length') or 0 for t in page.playlist)
