@@ -162,6 +162,9 @@ class PlayQueue(playlist.Playlist):
                 # reached the end of the internal queue, don't repeat
                 if track is None:
                     self.__queue_has_tracks = False
+                else:
+                    # otherwise set current playlist to queue
+                    self.player.queue.current_playlist = self
 
             if track is None and self.current_playlist is not self:
                 track = self.current_playlist.next()
@@ -341,4 +344,6 @@ class PlayQueue(playlist.Playlist):
                 "%s/resume_paused" % self.player._name, False
             )
 
-            self.player.play(self.get_current(), start_at=start_at, paused=paused)
+            self.player.play(
+                self.current_playlist.get_current(), start_at=start_at, paused=paused
+            )
