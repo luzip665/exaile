@@ -69,6 +69,19 @@ class ExtendedCollectionOrders:
             )
             self.collection_panel.orders.append(new_order)
 
+        if settings.get_option('extendedcollectionorders/eco3', False):
+            new_order = Order(_("Artist - Track - By Track title"),
+                              (
+                                  'artist',  # Tree Level 1
+                                  (
+                                      ('title', 'title'),  # Sorting
+                                      "$title",  # Track display
+                                      ("title", 'date'),  # Search fields
+                                  )
+                              )
+                              )
+            self.collection_panel.orders.append(new_order)
+
         settings.set_option('gui/collection_active_view', self.last_active_view)
 
     def on_exaile_loaded(self):

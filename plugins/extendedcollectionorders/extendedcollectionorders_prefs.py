@@ -11,12 +11,11 @@ class GenreArtistDate(widgets.CheckPreference):
     default = False
     name = 'extendedcollectionorders/eco1'
 
-    # def change(self, *args):
-    #     pass
-
 class ArtistGenreDate(widgets.CheckPreference):
     default = False
     name = 'extendedcollectionorders/eco2'
 
-    # def change(self, *args):
-    #     pass
+
+class ArtistTrackTrack(widgets.CheckPreference):
+    default = False
+    name = 'extendedcollectionorders/eco3'
