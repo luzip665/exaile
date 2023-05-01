@@ -58,7 +58,7 @@ class ExtendedCollectionOrders:
         if settings.get_option('extendedcollectionorders/eco2', False):
             new_order = Order(_("Artist - Genre - By Date"),
               (
-                  'artist', # Tree Level 1
+                  (('artist', 'album'), "$artist - $album", ("album",)), # Tree Level 1
                   'genre', # Tree Level 2
                   (
                       ('date', 'title'), # Sorting
