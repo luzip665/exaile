@@ -31,6 +31,7 @@ from gi.repository import Gst
 import logging
 import os
 import urllib.parse
+import copy
 
 from xl import common
 from xl import event
@@ -147,7 +148,6 @@ class ExaileGstEngine(ExaileEngine):
     #
 
     def initialize(self):
-
         object.__setattr__(self, 'initialized', True)
 
         self.main_stream = AudioStream(self)
@@ -159,7 +159,6 @@ class ExaileGstEngine(ExaileEngine):
         self._reconfigure_crossfader()
 
     def _reconfigure_crossfader(self):
-
         self.logger.info("Reconfiguring crossfading")
 
         cf_duration = None
@@ -180,7 +179,6 @@ class ExaileGstEngine(ExaileEngine):
         self.main_stream.reconfigure_fader(cf_duration, cf_duration)
 
     def _reconfigure_sink(self):
-
         self.logger.info("Reconfiguring audiosinks")
 
         self.main_stream.reconfigure_sink()
@@ -225,9 +223,7 @@ class ExaileGstEngine(ExaileEngine):
         return self.main_stream.get_user_volume()
 
     def on_track_stopoffset_changed(self, track):
-
         for stream in [self.main_stream, self.other_stream]:
-
             if stream is None or stream.current_track != track:
                 continue
 
@@ -272,7 +268,6 @@ class ExaileGstEngine(ExaileEngine):
     #
 
     def _autoadvance_track(self, still_fading=False):
-
         track = self.player.engine_autoadvance_get_next_track()
 
         if track:
@@ -288,7 +283,6 @@ class ExaileGstEngine(ExaileEngine):
 
     @common.idle_add()
     def _eos_func(self, stream):
-
         if stream == self.main_stream:
             self._autoadvance_track()
 
@@ -346,7 +340,6 @@ class AudioStream:
     idx = 0
 
     def __init__(self, engine):
-
         AudioStream.idx += 1
         self.name = '%s-audiostream-%s' % (engine.name, self.idx)
         self.engine = engine
@@ -401,7 +394,6 @@ class AudioStream:
         )
 
     def destroy(self):
-
         self.fader.stop()
         self.playbin.set_state(Gst.State.NULL)
         self.playbin.get_bus().remove_signal_watch()
@@ -574,7 +566,6 @@ class AudioStream:
         return prior_track
 
     def unpause(self):
-
         # gstreamer does not buffer paused network streams, so if the user
         # is unpausing a stream, just restart playback
         current = self.current_track
@@ -612,7 +603,6 @@ class AudioStream:
             )
 
     def on_fade_out_begin(self):
-
         if self.engine.crossfade_enabled:
             self.engine._autoadvance_track(still_fading=True)
 
@@ -633,9 +623,12 @@ class AudioStream:
             Useful for streams and files mutagen doesn't understand."""
 
             current = self.current_track
-
+            remote_newsong = False
             if not current.is_local():
-                gst_utils.parse_stream_tags(current, message.parse_tag())
+                prior_track = copy.deepcopy(current)
+                remote_newsong = gst_utils.parse_stream_tags(
+                    current, message.parse_tag()
+                )
 
             if current and not current.get_tag_raw('__length'):
                 res, raw_duration = self.playbin.query_duration(Gst.Format.TIME)
@@ -645,6 +638,10 @@ class AudioStream:
                 duration = float(raw_duration) / Gst.SECOND
                 if duration > 0:
                     current.set_tag_raw('__length', duration)
+
+            if remote_newsong:
+                self.engine.player.engine_notify_track_end(prior_track, False)
+                self.engine.player.engine_notify_track_start(current)
 
         elif (
             message.type == Gst.MessageType.EOS
@@ -657,7 +654,6 @@ class AudioStream:
             and message.src == self.playbin
             and self.buffered_track is not None
         ):
-
             # This handles starting the next track during gapless transition
             buffered_track = self.buffered_track
             self.buffered_track = None
@@ -667,7 +663,6 @@ class AudioStream:
             self.engine._next_track(*play_args)
 
         elif message.type == Gst.MessageType.STATE_CHANGED:
-
             # This idea from quodlibet: pulsesink will not notify us when
             # volume changes if the stream is paused, so do it when the
             # state changes.

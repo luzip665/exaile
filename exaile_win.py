@@ -8,7 +8,16 @@
 import builtins
 import msvcrt
 import sys
+import os
 from ctypes import windll
+
+
+# Provide dummy sys.stdout and sys.stderr, which are None in noconsole/windowed
+# mode (launched using pythonw.exe, or PyInstaller build).
+if sys.stdout is None:
+    sys.stdout = open(os.devnull, "w")
+if sys.stderr is None:
+    sys.stderr = open(os.devnull, "w")
 
 
 __builtin__open = __builtins__.open
@@ -25,7 +34,6 @@ builtins.open = __open_inheritance_hack
 
 
 def error(message1, message2=None, die=True):
-
     import logging
 
     """Show error message and exit.
@@ -49,7 +57,6 @@ def error(message1, message2=None, die=True):
 
 
 def main():
-
     import logging
 
     logging.basicConfig(

@@ -247,7 +247,6 @@ class Collection(trax.TrackDB):
         scan_interval = 20
 
         for library in self.libraries.values():
-
             if (
                 not force_update
                 and startup_only
@@ -261,7 +260,7 @@ class Collection(trax.TrackDB):
             self._running_total_count += self._running_count
             if self._scan_stopped:
                 break
-        else:  # didnt break
+        else:  # didn't break
             try:
                 if self.location is not None:
                     self.save_to_location()
@@ -481,7 +480,6 @@ class LibraryMonitor(GObject.GObject):
                 fileinfo.get_file_type() == Gio.FileType.DIRECTORY
                 and gfile not in self.__monitors
             ):
-
                 for directory in common.walk_directories(gfile):
                     monitor = directory.monitor_directory(
                         Gio.FileMonitorFlags.NONE, None
@@ -734,7 +732,7 @@ class Library:
                 self.collection.add(tr)
 
             # Track already existed. This fixes trax.get_tracks_from_uri
-            # on windows, unknown why fix isnt needed on linux.
+            # on windows, unknown why fix isn't needed on linux.
             elif not tr._init:
                 self.collection.add(tr)
         return tr
@@ -774,7 +772,7 @@ class Library:
                 if dirtracks:
                     for tr in dirtracks:
                         self._check_compilation(ccheck, compilations, tr)
-                    for (basedir, album) in compilations:
+                    for basedir, album in compilations:
                         base = basedir.replace('"', '\\"')
                         alb = album.replace('"', '\\"')
                         items = [
@@ -801,7 +799,7 @@ class Library:
                     # for compilation detection. Most albums have far fewer
                     # than 110 tracks anyway, so it is unlikely that this
                     # restriction will affect the heuristic's accuracy.
-                    # 110 was chosen to accomodate "top 100"-style
+                    # 110 was chosen to accommodate "top 100"-style
                     # compilations.
                     if len(dirtracks) > 110:
                         logger.debug(
@@ -909,7 +907,7 @@ class TransferQueue:
 
     def transfer(self) -> None:
         """
-        Tranfer the queued tracks to the library.
+        Transfer the queued tracks to the library.
 
         This is NOT asynchronous
         """

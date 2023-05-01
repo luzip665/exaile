@@ -254,7 +254,6 @@ class FormatConverter:
         if track_uri.startswith('file:///') and not Gio.File.new_for_uri(
             track_uri
         ).query_exists(None):
-
             if not playlist_uri.startswith('file:///'):
                 logging.debug('Track does not seem to exist, using original path')
             else:
@@ -521,7 +520,6 @@ class PLSConverter(FormatConverter):
 
             with GioFileInputStream(gfile) as stream:
                 for line in stream:
-
                     line = line.strip()
 
                     if not line:
@@ -1162,7 +1160,6 @@ class Playlist:
                 return -1, None
 
     def __get_next(self, current_position):
-
         # don't recalculate
         if self.__next_data is not None:
             return self.__next_data[2]
@@ -1530,7 +1527,7 @@ class Playlist:
             track = None
             track = trax.Track(uri=loc)
 
-            # readd meta
+            # re-add meta
             if not track:
                 continue
             if not track.is_local() and meta is not None:
@@ -1709,7 +1706,6 @@ class Playlist:
         return item
 
     def on_playback_track_start(self, event_type, player, track):
-
         if player.queue is not None and player.queue.current_playlist == self:
             if self.dynamic_mode != 'disabled':
                 self.__fetch_dynamic_tracks()
@@ -1877,7 +1873,7 @@ class SmartPlaylist:
 
     def remove_param(self, index):
         """
-        Removes a parameter at the speficied index
+        Removes a parameter at the specified index
 
         index:  the index of the parameter to remove
         """
@@ -1894,7 +1890,7 @@ class SmartPlaylist:
         pl = Playlist(name=self.name)
         if not collection:
             collection = self.collection
-        if not collection:  # if there wasnt one set we might not have one
+        if not collection:  # if there wasn't one set we might not have one
             return pl
 
         search_string, matchers = self._create_search_data(collection)
@@ -2149,7 +2145,7 @@ class PlaylistManager:
         # collect the names of all playlists in playlist_dir
         existing = []
         for f in os.listdir(self.playlist_dir):
-            # everything except the order file shold be a playlist, but
+            # everything except the order file should be a playlist, but
             # check against hidden files since some editors put
             # temporary stuff in the same dir.
             if f != os.path.basename(self.order_file) and not f.startswith("."):

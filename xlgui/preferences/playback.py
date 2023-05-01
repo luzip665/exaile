@@ -99,7 +99,6 @@ class SelectDeviceForSinkPreference(widgets.ComboPreference, widgets.Conditional
         return self.get_condition_value() == 'auto'
 
     def on_condition_met(self):
-
         # disable because the clear() causes a settings write
         self.is_enabled = False
 
@@ -161,6 +160,16 @@ class EnqueueBeginsPlayback(widgets.CheckPreference):
 class RemoveQueuedItemWhenPlayed(widgets.CheckPreference):
     default = True
     name = 'queue/remove_item_when_played'
+
+
+class RemoveQueuedItemAfterPlayed(widgets.CheckPreference, widgets.CheckConditional):
+    default = False
+    name = 'queue/remove_item_after_played'
+    condition_preference_name = 'queue/remove_item_when_played'
+
+    def __init__(self, preferences, widget):
+        widgets.CheckPreference.__init__(self, preferences, widget)
+        widgets.CheckConditional.__init__(self)
 
 
 class DisableNewTrackWhenPlaying(widgets.CheckPreference):

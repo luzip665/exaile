@@ -18,7 +18,6 @@ LOG = logging.getLogger(__name__)
 
 
 class Test_MetadataCacher:
-
     TIMEOUT = 2000
     MAX_ENTRIES = 2
 
@@ -438,7 +437,6 @@ class TestTrack:
 
     @unittest.skip("TODO")
     def test_get_sort_tag_compilation_unknown(self):
-
         tr = track.Track('/foo')
         tr.set_tag_raw('__compilation', 'foo')
         # Does not actually modify anything
@@ -517,7 +515,7 @@ class TestTrack:
         tr.set_tag_raw('__bitrate', 48000)
         assert tr.get_tag_display('__bitrate') == '48k'
 
-    def test_get_display_tag_bitrate_bitrateless_formate(self, test_tracks):
+    def test_get_display_tag_bitrate_bitrateless_format(self, test_tracks):
         td = test_tracks.get('.flac')
         tr = track.Track(td.filename)
         assert tr.get_tag_display('__bitrate') == ''

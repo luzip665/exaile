@@ -689,7 +689,7 @@ class Exaile:
 
         event.log_event("player_loaded", player.PLAYER, None)
 
-        # Initalize playlist manager
+        # Initialize playlist manager
         from xl import playlist
 
         self.playlists = playlist.PlaylistManager()
@@ -705,7 +705,7 @@ class Exaile:
 
         dynamic.MANAGER.collection = self.collection
 
-        # Initalize device manager
+        # Initialize device manager
         logger.info("Loading devices...")
         from xl import devices
 
@@ -738,7 +738,8 @@ class Exaile:
             import xlgui
 
             self.gui = xlgui.Main(self)
-            self.gui.main.window.show_all()
+            if not self.options.StartMinimized:
+                self.gui.main.window.show_all()
             event.log_event("gui_loaded", self, None)
 
             if splash is not None:
@@ -899,7 +900,6 @@ class Exaile:
         fmt = {'version': version}
 
         if not hasattr(self, '_user_agent_no_plugin'):
-
             from xl import settings
 
             default_no_plugin = 'Exaile/%(version)s (+https://www.exaile.org)'

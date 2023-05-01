@@ -50,7 +50,6 @@ class PluginExistsError(Exception):
 
 class PluginsManager:
     def __init__(self, exaile, load=True):
-
         self.user_installed_plugindir = xdg.get_user_plugin_dir()
         """Dir for user installed plugins"""
 
@@ -229,7 +228,7 @@ class PluginsManager:
             for line in f:
                 try:
                     key, val = line.split("=", 1)
-                    # restricted eval - no bult-in funcs. marginally more secure.
+                    # restricted eval - no built-in funcs. marginally more secure.
                     infodict[key] = eval(val, {'__builtins__': None, '_': _}, {})
                 except ValueError:
                     pass  # this happens on blank lines

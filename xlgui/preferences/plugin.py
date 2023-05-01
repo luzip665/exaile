@@ -314,7 +314,7 @@ class PluginManager:
                         self.window,
                         "\n".join(
                             [
-                                _('Plugin allready exists!'),
+                                _('Plugin already exists!'),
                                 _('Do you want to override it?'),
                             ]
                         ),
@@ -387,7 +387,6 @@ class PluginManager:
         self.on_selection_changed(self.list.get_selection())
 
     def on_plugin_event(self, evtname, obj, plugin_name, enabled):
-
         if hasattr(self.plugins.loaded_plugins[plugin_name], 'get_preferences_pane'):
             self.preferences._load_plugin_pages()
 

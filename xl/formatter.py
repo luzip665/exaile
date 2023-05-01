@@ -159,7 +159,7 @@ class ParameterTemplate(metaclass=_ParameterTemplateMetaclass):
 
 
 class Formatter(GObject.GObject):
-    """
+    R"""
     A generic text formatter based on a format string
 
     By default the following parameters are provided
@@ -272,7 +272,7 @@ class Formatter(GObject.GObject):
 
                 identifier_parts += [groups['parameters']]
 
-            # Required to make multiple occurences of the same
+            # Required to make multiple occurrences of the same
             # identifier with different parameters work
             extractions[':'.join(identifier_parts)] = (identifier, parameters)
 

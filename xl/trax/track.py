@@ -50,7 +50,7 @@ _K = TypeVar('_K')
 _V = TypeVar('_V')
 _V1 = TypeVar('_V1')
 
-# map chars to appropriate subsitutes for sorting
+# map chars to appropriate substitutes for sorting
 _sortcharmap = {
     'ß': 'ss',  # U+00DF
     'æ': 'ae',  # U+00E6
@@ -419,6 +419,11 @@ class Track:
             # TODO: this probably breaks on non-local files
             ntags['__basedir'] = gloc.get_parent().get_path()
 
+            if '__rating' in ntags and settings.get_option(
+                'collection/write_rating_to_audio_file_metadata', False
+            ):
+                ntags['__rating'] = int(ntags['__rating'][0])
+
             # remove tags that could be in the file, but are in fact not
             # in the file. Retain tags in the DB that aren't supported by
             # the file format.
@@ -501,6 +506,13 @@ class Track:
         if not isinstance(values, list):
             if not tag.startswith("__"):  # internal tags dont have to be lists
                 values = [values]
+
+        if (
+            tag == '__rating'
+            and not isinstance(values, list)
+            and self._write_rating_to_disk()
+        ):
+            values = [values]
 
         # For lists, filter out empty values
         if isinstance(values, list):
@@ -598,6 +610,11 @@ class Track:
             # TODO: This is only necessary because some places that deal with
             # __startoffset don't check for None. Those need to be fixed.
             value = self.__tags.get(tag, 0)
+        elif tag == '__rating':
+            try:
+                value = self.__tags.get(tag)[0]
+            except TypeError as e:
+                value = self.__tags.get(tag)
         else:
             value = self.__tags.get(tag)
 
@@ -917,6 +934,9 @@ class Track:
         rating = max(0, rating)
         rating = 100 * rating / maximum
         self.set_tags(__rating=rating)
+
+        if self._write_rating_to_disk():
+            self.set_tag_disk('__rating', rating)
         return rating
 
     ### Special functions for wrangling tag values ###
@@ -1026,7 +1046,7 @@ class Track:
         turns characters like æ into values suitable for sorting,
         like 'ae'. see _sortcharmap for the mapping.
 
-        value must be a unicode object or this wont replace anything.
+        value must be a unicode object or this won't replace anything.
 
         value must be in lower-case
         """
@@ -1076,6 +1096,22 @@ class Track:
     def _get_track_count(cls):
         '''Internal API, returns number of track objects we have'''
         return len(cls._Track__tracksdict)
+
+    def _write_rating_to_disk(self):
+        if not settings.get_option(
+            'collection/write_rating_to_audio_file_metadata', False
+        ):
+            return False
+
+        f = self._get_format_obj()
+        if f is None:
+            return False
+
+        keys = f.tag_mapping
+        if not '__rating' in keys:
+            return False
+
+        return True
 
 
 event.add_callback(Track._the_cuts_cb, 'collection_option_set')
