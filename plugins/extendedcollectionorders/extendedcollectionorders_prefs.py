@@ -13,19 +13,21 @@ ui = os.path.join(basedir, "eco_pane.ui")
 def init(dialog, builder):
     grid = builder.get_object('preferences_pane')
 
+
+
     custom_orders = [
-        {'name': "Artist - Genre - By Date", 'levels': ['$artist', '$genre', '$date - $title']},
-        {'name': "Genre - Artist - By Date", 'levels': ['$genre', '$artist', '$date - $title']}
+        {'name': "Artist - Genre - By Date", 'levels': 'artist, genre', 'display': '$date - $title', 'sorting': 'date, title'},
+        {'name': "Genre - Artist - By Date", 'levels': 'genre, artist', 'display': '$date - $title', 'sorting': 'date, title'}
     ]
 
     i = 0
     for order in custom_orders:
-        line = build_order_line(order['name'], order['levels'], i)
+        line = build_order_line(order['name'], order['levels'], order['display'], order['sorting'], i)
         grid.attach(line, 0, i, 1, 1)
         i += 1
 
 
-def build_order_line(name, levels, number):
+def build_order_line(name, levels, display, sorting, number):
 
     def insert_input(name: str, label_str: str, row: int):
         label = Gtk.Label()
@@ -34,19 +36,15 @@ def build_order_line(name, levels, number):
 
         input = Gtk.Entry()  # comma list
         input.set_text(name)
+
         line_grid.attach(input, 1, row, 1, 1)
 
     line_grid = Gtk.Grid()
 
     insert_input(name, 'name', 0)
-    # insert_input('tree_levels', 'tree_levels', 1)
-    # insert_input('sorting', 'tree_levels', 1)
-    # insert_input('tree_levels', 'tree_levels', 1)
-    # insert_input('tree_levels', 'tree_levels', 1)
-
-    sorting = Gtk.Entry() #comma list
-    track_display = Gtk.Entry #like $date - $title
-    search_fields = Gtk.Entry #comma list
+    insert_input(levels, 'tree_levels', 1)
+    insert_input(sorting, 'sorting', 2)
+    insert_input(display, 'display', 3)
 
     return line_grid
 
