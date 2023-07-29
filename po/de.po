@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exaile\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-02 06:46+0100\n"
-"PO-Revision-Date: 2022-06-12 01:19+0000\n"
-"Last-Translator: TrueXanadul <Xanadul@protonmail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/exaile/master/de/"
-">\n"
+"POT-Creation-Date: 2023-07-10 21:21+0200\n"
+"PO-Revision-Date: 2023-07-11 22:53+0000\n"
+"Last-Translator: Luzip665 <luzip665@posteo.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/exaile/master/de/>"
+"\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 "X-Launchpad-Export-Date: 2014-08-12 06:25+0000\n"
 
 #: ../xl/covers.py:523 ../data/ui/trackproperties_dialog.ui:183
@@ -98,7 +98,7 @@ msgstr "%d:%02d:%02d"
 msgid "%d:%02d"
 msgstr "%d:%02d"
 
-#: ../xl/formatter.py:730 ../xl/main.py:799 ../xl/trax/track.py:72
+#: ../xl/formatter.py:730 ../xl/main.py:810 ../xl/trax/track.py:72
 #: ../plugins/icecast/__init__.py:171
 msgid "Unknown"
 msgstr "Unbekannt"
@@ -391,21 +391,21 @@ msgstr "D-Bus-Unterstützung deaktivieren"
 msgid "Disable HAL support."
 msgstr "HAL-Unterstützung deaktivieren."
 
-#: ../xl/main.py:820
+#: ../xl/main.py:831
 msgid "Entire Library"
 msgstr "Gesamte Bibliothek"
 
-#: ../xl/main.py:827
+#: ../xl/main.py:838
 #, python-format
 msgid "Random %d"
 msgstr "Zufällige %d"
 
-#: ../xl/main.py:836
+#: ../xl/main.py:847
 #, python-format
 msgid "Rating > %d"
 msgstr "Bewertung > %d"
 
-#: ../xl/main.py:1004
+#: ../xl/main.py:1015
 msgid ""
 "Exaile is not yet finished loading. Perhaps you should listen for the "
 "exaile_loaded signal?"
@@ -536,7 +536,7 @@ msgstr "Titel"
 #: ../xl/metadata/tags.py:72 ../plugins/grouptagger/gt_mass.ui:162
 #: ../plugins/jamendo/ui/jamendo_panel.ui:98
 msgid "Track"
-msgstr "Titel"
+msgstr "Stück"
 
 #: ../xl/metadata/tags.py:73
 msgid "Version"
@@ -792,7 +792,7 @@ msgid " / "
 msgstr " & "
 
 #. TRANSLATORS: Bitrate (k here is short for kbps).
-#: ../xl/trax/track.py:730 ../xl/trax/track.py:796
+#: ../xl/trax/track.py:765 ../xl/trax/track.py:831
 #, python-format
 msgid "%dk"
 msgstr "%dk"
@@ -1095,7 +1095,7 @@ msgstr "C_over"
 
 #: ../xlgui/menu.py:253
 msgid "_Preferences"
-msgstr "Einstellungen"
+msgstr "_Einstellungen"
 
 #: ../xlgui/menu.py:278
 msgid "_Show Playing Track"
@@ -1252,7 +1252,7 @@ msgstr "Neuen Namen für die Wiedergabeliste eingeben"
 msgid "Rename Playlist"
 msgstr "Wiedergabeliste umbenennen"
 
-#: ../xlgui/panel/playlists.py:168 ../xlgui/widgets/dialogs.py:1768
+#: ../xlgui/panel/playlists.py:168 ../xlgui/widgets/dialogs.py:1769
 #: ../xlgui/widgets/smart_playlist_editor.py:393
 msgid "The playlist name you entered is already in use."
 msgstr "Eine Wiedergabeliste mit dem angegebenen Namen existiert bereits."
@@ -1399,7 +1399,11 @@ msgstr "Auf Standardwerte zurücksetzen"
 
 #: ../xlgui/preferences/collection.py:130
 msgid "Migrating ratings to audio file metadata"
-msgstr ""
+msgstr "Speichere Bewertungen in den Metadaten der Dateien"
+
+#: ../xlgui/preferences/collection.py:195
+msgid "Migrating metadata"
+msgstr "Aktualisiere Metadaten"
 
 #: ../xlgui/preferences/cover.py:31 ../plugins/amazoncovers/PLUGININFO:5
 #: ../plugins/lastfmcovers/PLUGININFO:5
@@ -1455,8 +1459,8 @@ msgstr "Plugin auswählen"
 msgid "Plugin Archives"
 msgstr "Plugin-Archive"
 
-#: ../xlgui/preferences/plugin.py:298 ../xlgui/widgets/dialogs.py:724
-#: ../xlgui/widgets/dialogs.py:900
+#: ../xlgui/preferences/plugin.py:298 ../xlgui/widgets/dialogs.py:725
+#: ../xlgui/widgets/dialogs.py:901
 msgid "All Files"
 msgstr "Alle Dateien"
 
@@ -1577,7 +1581,7 @@ msgstr "Verzeichnis öffnen"
 msgid "Apply current value to all tracks"
 msgstr "Aktuellen Wert auf alle Titel anwenden"
 
-#: ../xlgui/properties.py:1288 ../xlgui/widgets/dialogs.py:1551
+#: ../xlgui/properties.py:1288 ../xlgui/widgets/dialogs.py:1552
 #, python-format
 msgid "Saved %(count)s of %(total)s."
 msgstr "%(count)s von %(total)s gespeichert."
@@ -1586,114 +1590,114 @@ msgstr "%(count)s von %(total)s gespeichert."
 msgid "Exaile Music Player"
 msgstr "Exaile Musikwiedergabe"
 
-#: ../xlgui/widgets/dialogs.py:358
+#: ../xlgui/widgets/dialogs.py:359
 msgid "Enter the URL to open"
 msgstr "Zu öffnende Adresse eingeben"
 
-#: ../xlgui/widgets/dialogs.py:358
+#: ../xlgui/widgets/dialogs.py:359
 msgid "Open URL"
 msgstr "Adresse aufrufen"
 
-#: ../xlgui/widgets/dialogs.py:645
+#: ../xlgui/widgets/dialogs.py:646
 msgid "Select File Type (by Extension)"
 msgstr "Dateityp wählen (nach Erweiterung)"
 
-#: ../xlgui/widgets/dialogs.py:703
+#: ../xlgui/widgets/dialogs.py:704
 msgid "Choose Media to Open"
 msgstr "Medium zum Öffnen auswählen"
 
-#: ../xlgui/widgets/dialogs.py:718
+#: ../xlgui/widgets/dialogs.py:719
 msgid "Supported Files"
 msgstr "Unterstützte Dateien"
 
-#: ../xlgui/widgets/dialogs.py:720
+#: ../xlgui/widgets/dialogs.py:721
 msgid "Music Files"
 msgstr "Musikdateien"
 
-#: ../xlgui/widgets/dialogs.py:722 ../xlgui/widgets/dialogs.py:898
+#: ../xlgui/widgets/dialogs.py:723 ../xlgui/widgets/dialogs.py:899
 msgid "Playlist Files"
 msgstr "Wiedergabelisten"
 
-#: ../xlgui/widgets/dialogs.py:806
+#: ../xlgui/widgets/dialogs.py:807
 msgid "Choose Directory to Open"
 msgstr "Ordner zum Öffnen auswählen"
 
-#: ../xlgui/widgets/dialogs.py:883
+#: ../xlgui/widgets/dialogs.py:884
 msgid "Import Playlist"
 msgstr "Wiedergabeliste importieren"
 
-#: ../xlgui/widgets/dialogs.py:998
+#: ../xlgui/widgets/dialogs.py:999
 msgid "Export Current Playlist"
 msgstr "Aktuelle Wiedergabeliste exportieren"
 
-#: ../xlgui/widgets/dialogs.py:1016
+#: ../xlgui/widgets/dialogs.py:1017
 msgid "Use relative paths to tracks"
 msgstr "Relative Pfade für Titel verwenden"
 
-#: ../xlgui/widgets/dialogs.py:1075
+#: ../xlgui/widgets/dialogs.py:1076
 #, python-format
 msgid "Playlist saved as <b>%s</b>."
 msgstr "Playlist gespeichert als <b>%s</b>."
 
-#: ../xlgui/widgets/dialogs.py:1092
+#: ../xlgui/widgets/dialogs.py:1093
 #, python-format
 msgid "Close %s"
 msgstr "%s schließen"
 
-#: ../xlgui/widgets/dialogs.py:1093
+#: ../xlgui/widgets/dialogs.py:1094
 #, python-format
 msgid "<b>Save changes to %s before closing?</b>"
 msgstr "<b>Änderungen an %s vor dem Schließen speichern?</b>"
 
-#: ../xlgui/widgets/dialogs.py:1095
+#: ../xlgui/widgets/dialogs.py:1096
 msgid "Your changes will be lost if you don't save them"
 msgstr "Änderungen gehen ohne Sicherung verloren"
 
-#: ../xlgui/widgets/dialogs.py:1099
+#: ../xlgui/widgets/dialogs.py:1100
 msgid "Close Without Saving"
 msgstr "Schließen, ohne zu speichern"
 
-#: ../xlgui/widgets/dialogs.py:1491
+#: ../xlgui/widgets/dialogs.py:1492
 msgid "Yes to all"
 msgstr "Ja zu allen"
 
-#: ../xlgui/widgets/dialogs.py:1499
+#: ../xlgui/widgets/dialogs.py:1500
 msgid "No to all"
 msgstr "Nein zu allen"
 
-#: ../xlgui/widgets/dialogs.py:1668 ../xlgui/widgets/dialogs.py:1685
+#: ../xlgui/widgets/dialogs.py:1669 ../xlgui/widgets/dialogs.py:1686
 #, python-format
 msgid "Error occurred while copying %s: %s"
 msgstr "Fehler beim Kopieren von %s: %s"
 
-#: ../xlgui/widgets/dialogs.py:1695
+#: ../xlgui/widgets/dialogs.py:1696
 #, python-format
 msgid "File exists, overwrite %s ?"
 msgstr "Datei existiert bereits, %s überschreiben?"
 
-#: ../xlgui/widgets/dialogs.py:1751
+#: ../xlgui/widgets/dialogs.py:1752
 msgid "Playlist name:"
 msgstr "Name der Wiedergabeliste:"
 
-#: ../xlgui/widgets/dialogs.py:1752
+#: ../xlgui/widgets/dialogs.py:1753
 msgid "Add new playlist..."
 msgstr "Neue Wiedergabeliste hinzufügen …"
 
-#: ../xlgui/widgets/dialogs.py:1765
+#: ../xlgui/widgets/dialogs.py:1766
 #: ../xlgui/widgets/smart_playlist_editor.py:385
 msgid "You did not enter a name for your playlist"
 msgstr "Kein Name für die Wiedergabeliste eingegeben"
 
-#: ../xlgui/widgets/dialogs.py:1774
+#: ../xlgui/widgets/dialogs.py:1775
 msgid "Save As"
 msgstr "Speichern unter"
 
-#: ../xlgui/widgets/dialogs.py:1843
+#: ../xlgui/widgets/dialogs.py:1844
 #, python-format
 msgid "Exporting %s"
 msgstr "Exportiere %s"
 
-#: ../xlgui/widgets/dialogs.py:1848
+#: ../xlgui/widgets/dialogs.py:1849
 msgid "Choose directory to export files to"
 msgstr "Verzeichnis für den Dateiexport auswählen"
 
@@ -1900,7 +1904,7 @@ msgstr "Dynamisch ähnliche Stücke der Wiedergabeliste hinzufügen"
 
 #: ../xlgui/widgets/playlist.py:804
 msgid "Loading"
-msgstr "Wird geladen …"
+msgstr "Wird geladen…"
 
 #: ../xlgui/widgets/playlist_columns.py:271
 msgid "Track Number"
@@ -2127,7 +2131,7 @@ msgstr "© 2009–2020 Verschiedene Mitwirkende"
 #: ../data/ui/about_dialog.ui:26
 msgctxt "About dialog translator credits"
 msgid "translator-credits"
-msgstr "Übersetzer/innen:"
+msgstr "Übersetzer/innen"
 
 #: ../data/ui/collection_manager.ui:39
 msgid "Collection Manager"
@@ -2436,8 +2440,8 @@ msgstr "Begrüßungsbildschirm beim Starten anzeigen"
 #: ../data/ui/preferences/appearance.ui:330
 msgid ""
 "Tray icons are not supported on some platforms, most notably on Wayland. On "
-"GNOME Shell 3.26+ on Xorg, tray icons only work if you have the <a "
-"href=\"https://extensions.gnome.org/extension/495/topicons/\">\"TopIcons\" "
+"GNOME Shell 3.26+ on Xorg, tray icons only work if you have the <a href="
+"\"https://extensions.gnome.org/extension/495/topicons/\">\"TopIcons\" "
 "extension</a> (or a similar one) installed."
 msgstr ""
 "Tray-Symbole werden auf einigen Plattformen nicht unterstützt, vor allem "
@@ -2483,7 +2487,7 @@ msgstr "Anzahl der Titel in der Playlist anzeigen"
 msgid "Show playlist duration"
 msgstr "Wiedergabedauer der Playlist anzeigen"
 
-#: ../data/ui/preferences/collection.ui:13
+#: ../data/ui/preferences/collection.ui:14
 msgid ""
 "Words to strip from the beginning of artist tags when sorting (space "
 "separated):"
@@ -2491,32 +2495,57 @@ msgstr ""
 "Vom Anfang von Künstler-Tags zum Sortieren zu entfernende Wörter (getrennt "
 "durch Leerzeichen):"
 
-#: ../data/ui/preferences/collection.ui:44
+#: ../data/ui/preferences/collection.ui:45
 msgid "(Right click to reset to defaults)"
 msgstr "(Zum Wiederherstellen der Standardwerte rechtsklicken)"
 
-#: ../data/ui/preferences/collection.ui:57
+#: ../data/ui/preferences/collection.ui:58
 msgid "Use file-based compilation detection"
 msgstr "Dateibasierte Kompilierungserkennung verwenden"
 
-#: ../data/ui/preferences/collection.ui:71
+#: ../data/ui/preferences/collection.ui:72
 msgid "Read and write ratings additionally in audio file metadata"
 msgstr ""
+"Bewertungen zusätzlich in den Metadaten der Dateien selbst lesen und "
+"schreiben"
 
-#: ../data/ui/preferences/collection.ui:86
+#: ../data/ui/preferences/collection.ui:87
 msgid ""
 "Use this experimental feature to read and write ratings in audio file "
-"metadata instead of database, if possible.\n"
+"metadata additionally to database, if possible.\n"
 "This feature should work for MP3, MP4, FLAC and OGG. "
 msgstr ""
+"Verwenden Sie diese experimentelle Funktion, um Bewertungen in Audiodatei-"
+"Metadaten zusätzlich zur Datenbank zu lesen und zu schreiben.\n"
+"Diese Funktion sollte für MP3, MP4, FLAC und OGG funktionieren. "
 
 #: ../data/ui/preferences/collection.ui:105
 msgid "Use e-mail for Popularimeter (MP3 only):"
-msgstr ""
+msgstr "E-Mail für Popularimeter (Nur MP3):"
 
-#: ../data/ui/preferences/collection.ui:134
+#: ../data/ui/preferences/collection.ui:131
 msgid "Write existing ratings to track files now"
+msgstr "Vorhandene Bewertungen jetzt in die Dateien schreiben"
+
+#: ../data/ui/preferences/collection.ui:156
+msgid "Use legacy tag mapping"
+msgstr "Veraltetes Tag-Mapping verwenden"
+
+#: ../data/ui/preferences/collection.ui:171
+msgid ""
+"Use legacy tag mapping for Ogg Vorbis and FLAC files for comment and bpm "
+"tags. From Exaile 4.1.3 the mapping is equivalent to MusicBrainz.\n"
+"Your can start migration here. After migration this feature will be disabled."
 msgstr ""
+"Verwenden Sie das veraltete Tag-Mapping für Ogg Vorbis und FLAC Dateien für "
+"die Tags comment und bpm. Mit Exaile 4.1.3 wurde das Mapping dem von "
+"MusicBrainz angepasst.\n"
+"Sie können die Migration hier durchführen. Nach der Migration wird das alte "
+"Tag-Mapping deaktiviert."
+
+#: ../data/ui/preferences/collection.ui:186
+msgid "Migrate existing tempo and comment tags now"
+msgstr "Aktualisiere vorhandene Tempo - und Kommentar-Tags jetzt"
 
 #: ../data/ui/preferences/cover.ui:12
 msgid "Use covers from local files"
@@ -2711,7 +2740,7 @@ msgid ""
 "the track instead of playing it"
 msgstr ""
 "Bei Doppelklick oder Druck auf die Eingabe-Taste in einer Wiedergabeliste, "
-"Titel in die Wiedergabeliste einreihen, statt ihn wiederzugeben."
+"Titel in die Wiedergabeliste einreihen statt ihn wiederzugeben"
 
 #: ../data/ui/preferences/plugin.ui:66
 msgid "Plugin"
@@ -2884,6 +2913,61 @@ msgstr "Hinzufügen"
 msgid "Maximum number of tracks:"
 msgstr "Höchstzahl an Titeln:"
 
+#: ../data/ui/widgets/info_dialog.ui:20
+msgid "Don't show this message again"
+msgstr "Nicht wieder anzeigen"
+
+#: ../data/ui/widgets/info_dialog.ui:79
+msgid ""
+"<span font-size=\"x-large\" font-weight=\"bold\">Welcome to Exaile 4.1.3</"
+"span>\n"
+"\n"
+"In this version there are two important changes in handling tags of media "
+"files.\n"
+"\n"
+"<b>Store Track Ratings in media files</b>\n"
+"With this experimental feature it is now possible to store the star ratings "
+"in the media files itself!\n"
+"If you want to test please go to Settings > Library and activate \"Read and "
+"write ratings additionally in audio file metadata\".\n"
+"There is also a tool to migrate all allready stored ratings to the media "
+"files.\n"
+"\n"
+"<b>Updated tagging for flac and ogg files</b>\n"
+"With this version Exaile can use the tags bpm for bpm countings and comment "
+"for comments on flac and ogg media files to be compatible with MusicBrainz.\n"
+"If you want to use please go to Settings > Library and uncheck \"Use legacy "
+"tag mapping\". If you use Exaile the first time this option is allready "
+"unchecked.\n"
+"There is also a tool to migrate legacy tags to the modern one. \n"
+"\n"
+msgstr ""
+"<span font-size=\"x-large\" font-weight=\"bold\">Willkommen zu Exaile 4.1.3</"
+"span>\n"
+"\n"
+"In dieser Version gibt es zwei wichtige Änderungen in der Verwendung von "
+"Tags und Metadaten von Medien-Dateien.\n"
+"\n"
+"<b>Bewertungen in den Medien-Dateien speichern</b>\n"
+"Mit dieser experimentellen Funktion ist es möglich, Bewertungen in den "
+"Metadaten der Medien-Dateien selbst zu speichern.\n"
+"Wenn Sie dieses Feature aktivieren möchten, gehen Sie zu Einstellungen > "
+"Bibliothek und aktivieren Sie die Checkbox bei \"Bewertungen zusätzlich in "
+"den Metadaten der Dateien selbst lesen und schreiben\".\n"
+"Ebenfalls gibt es die Möglichkeit, bereits vorhandene Bewertungen in die "
+"Medien-Dateien übertragen zu lassen.\n"
+"\n"
+"<b>Geändertes Metadaten-Mapping für FLAC und OGG-Dateien</b>\n"
+"Ab dieser Version kann Exaile die Tags \"bpm\" für BPM-Zahlen und \"comment"
+"\" für Kommentare nutzen, um damit kompatibel zu MusicBrainz zu sein.\n"
+"Möchten Sie die neuen Tags benutzen, gehen Sie zu Einstellungen > Bibliothek "
+"und deaktivieren die Checkbox \"Veraltetes Tag-Mapping verwenden\". Sollten "
+"Sie Exaile zum ersten Mal verwenden, ist diese Checkbox bereits "
+"deaktiviert.\n"
+"Ebenfalls gibt es dort die Möglichkeit, die Inhalte der alten Tags in die "
+"neuen Tags zu übernehmen. \n"
+"\n"
+
 #: ../data/ui/widgets/progress.ui:20
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -2959,25 +3043,25 @@ msgstr "Lesezeichen verwerfen"
 msgid "_Bookmarks"
 msgstr "Lesezeichen"
 
-#: ../plugins/bpm/__init__.py:67 ../plugins/bpm/__init__.py:204
+#: ../plugins/bpm/__init__.py:67 ../plugins/bpm/__init__.py:213
 msgid "Autodetect BPM"
 msgstr "BPM automatisch erkennen"
 
-#: ../plugins/bpm/__init__.py:131
+#: ../plugins/bpm/__init__.py:137
 #, python-format
 msgid "Set BPM of %d on %s?"
 msgstr "BPM von %d für %s festlegen?"
 
-#: ../plugins/bpm/__init__.py:182 ../plugins/bpm/bpm.ui:59
-#: ../plugins/bpm/PLUGININFO:3
+#: ../plugins/bpm/__init__.py:191 ../plugins/bpm/bpm_prefs.py:5
+#: ../plugins/bpm/bpm.ui:59 ../plugins/bpm/PLUGININFO:3
 msgid "BPM Counter"
 msgstr "BPM-Zähler"
 
-#: ../plugins/bpm/__init__.py:333 ../plugins/bpm/bpm.ui:31
+#: ../plugins/bpm/__init__.py:342 ../plugins/bpm/bpm.ui:31
 msgid "Update"
 msgstr "Aktualisierung"
 
-#: ../plugins/cd/__init__.py:161 ../plugins/cd/__init__.py:265
+#: ../plugins/cd/__init__.py:164 ../plugins/cd/__init__.py:268
 msgid "Audio Disc"
 msgstr "Audio-CD"
 
@@ -2988,6 +3072,10 @@ msgstr "Unbekannte CD"
 #: ../plugins/cd/_cdguipanel.py:113
 msgid "Importing CD..."
 msgstr "CD importieren …"
+
+#: ../plugins/cd/_cdguipanel.py:187
+msgid "Finished transcoding files"
+msgstr "Import beendet"
 
 #: ../plugins/cd/_cdguipanel.py:192
 msgid "Error transcoding files from CD."
@@ -3070,7 +3158,7 @@ msgstr "Desktopcover"
 msgid "Developer Tools"
 msgstr "Entwicklerwerkzeuge"
 
-#: ../plugins/equalizer/__init__.py:361
+#: ../plugins/equalizer/__init__.py:353
 msgid "_Equalizer"
 msgstr "_Equalizer"
 
@@ -3153,20 +3241,18 @@ msgstr[0] "Kein Titel gefunden"
 msgstr[1] "{amount} Titel gefunden"
 
 #: ../plugins/grouptagger/gt_mass.py:130
-#, fuzzy, python-brace-format
-#| msgid "Replace '%s' with '%s' on %s tracks?"
+#, python-brace-format
 msgid "Replace '{old_tag}' with '{new_tag}' on {amount} track?"
 msgid_plural "Replace '{old_tag}' with '{new_tag}' on {amount} tracks?"
-msgstr[0] "„%s” durch „%s” in allen %s Titeln ersetzen?"
-msgstr[1] "„%s” durch „%s” in allen %s Titeln ersetzen?"
+msgstr[0] "'{old_tag}' durch '{new_tag}' ersetzen?"
+msgstr[1] "'{old_tag}' durch '{new_tag}' in allen {amount} Titeln ersetzen?"
 
 #: ../plugins/grouptagger/gt_mass.py:140
-#, fuzzy, python-brace-format
-#| msgid "Delete '%s' from %s tracks?"
+#, python-brace-format
 msgid "Delete '{tag}' from {amount} track?"
 msgid_plural "Delete '{tag}' from {amount} tracks?"
-msgstr[0] "„%s” aus %s Titeln löschen?"
-msgstr[1] "„%s” aus %s Titeln löschen?"
+msgstr[0] "'{tag}' aus {amount} Titel löschen?"
+msgstr[1] "'{tag}' aus {amount} Titeln löschen?"
 
 #: ../plugins/grouptagger/gt_mass.py:166
 msgid ""
@@ -3299,7 +3385,7 @@ msgstr "Fehler beim Verbindungsaufbau zum Icecast-Server."
 
 #: ../plugins/icecast/__init__.py:149
 msgid "Parsing stations XML..."
-msgstr "Parse XML der Sender"
+msgstr "Parse XML der Sender..."
 
 #: ../plugins/icecast/__init__.py:161
 msgid "Retrieving stations..."
@@ -3323,7 +3409,7 @@ msgstr "Suchergebnisse von Icecast"
 
 #: ../plugins/icecast/__init__.py:353
 msgid "Parsing genre list..."
-msgstr "Parse Genre-Liste"
+msgstr "Parse Genre-Liste..."
 
 #: ../plugins/icecast/__init__.py:374
 #: ../plugins/developer/developer_window.ui:59
@@ -3415,7 +3501,7 @@ msgstr ""
 
 #: ../plugins/mainmenubutton/__init__.py:60
 msgid "This plugin needs at least one visible panel"
-msgstr "Dieses Plugin benötigt mindestens ein sichtbares Eingabefeld."
+msgstr "Dieses Plugin benötigt mindestens eine sichtbare Seitenleiste"
 
 #: ../plugins/mainmenubutton/__init__.py:80
 #: ../plugins/mainmenubutton/__init__.py:86
@@ -3585,10 +3671,9 @@ msgid "by {artist}"
 msgstr "von {artist}"
 
 #: ../plugins/notify/__init__.py:50
-#, fuzzy, python-brace-format
-#| msgid "from %(album)s"
+#, python-brace-format
 msgid "from {album}"
-msgstr "aus %(album)s"
+msgstr "aus {album}"
 
 #: ../plugins/notify/notifyprefs.py:22 ../plugins/notify/PLUGININFO:3
 msgid "Notify"
@@ -3746,7 +3831,7 @@ msgstr "Gerät für Vorschau"
 
 #: ../plugins/quickbuttons/qb_prefs.py:5
 msgid "Quickbuttons"
-msgstr "Quickbuttons"
+msgstr "Schnelleinstellungen"
 
 #: ../plugins/replaygain/replaygainprefs.py:31
 #: ../plugins/replaygain/PLUGININFO:3
@@ -3799,7 +3884,7 @@ msgstr "Fehler beim Verbindungsaufbau zum SomaFM-Server."
 msgid "Error importing playlist"
 msgstr "Fehler beim Importieren der Wiedergabeliste"
 
-#: ../plugins/streamripper/__init__.py:73
+#: ../plugins/streamripper/__init__.py:79
 msgid "Error executing streamripper"
 msgstr "Fehler beim Ausführen von Streamripper"
 
@@ -3927,6 +4012,10 @@ msgstr "Anmeldedaten _überprüfen"
 #: ../plugins/bpm/bpm.ui:42
 msgid "Apply BPM"
 msgstr "BPM anwenden"
+
+#: ../plugins/bpm/bpm_prefs.ui:12
+msgid "Enable confirmation dialog after manually setting bpm"
+msgstr "Bestätigungsdialog nach manuellem Setzen der BPM-Zahl"
 
 #: ../plugins/bpm/msg.ui:7
 msgid "Set BPM?"
@@ -4317,7 +4406,7 @@ msgstr ""
 "Um einen <b>API-Schlüssel</b> und ein <b>Geheimnis</b> zu erhalten bitte "
 "<b><a href=\"http://www.last.fm/api/account\">Your API Account</a></b> "
 "aufrufen. Nachdem diese Daten hier eingegeben und die <b>Zugriffsgenehmigung "
-"angefragt</b> und bestätigt wurde sind alle Vorbereitungen abgeschlossen."
+"angefragt</b> und bestätigt wurde, sind alle Vorbereitungen abgeschlossen."
 
 #. TRANSLATORS: Minimode window decoration option
 #: ../plugins/minimode/minimode_preferences.ui:15
@@ -4453,14 +4542,14 @@ msgstr "Wenn das Hauptfenster fokussiert ist"
 msgid ""
 "Every tag can be used with <b>$tag</b> or <b>${tag}</b>. Internal tags like "
 "<b>$__length</b> need to be specified with two leading underscores.\n"
-"<a href=\"https://developer.gnome.org/pango/stable/PangoMarkupFormat."
-"html\">Pango Text Attribute Markup</a> is supported."
+"<a href=\"https://developer.gnome.org/pango/stable/PangoMarkupFormat.html"
+"\">Pango Text Attribute Markup</a> is supported."
 msgstr ""
 "Jeder Tag kann mittels <b>$tag</b> oder <b>${tag}</b> genutzt werden. "
 "Internen Tags wie <b>$__length</b> müssen zwei Unterstriche vorangestellt "
 "werden.\n"
-"<a href=\"https://developer.gnome.org/pango/stable/PangoMarkupFormat."
-"html\">Pango Text Attribute Markup</a> wird unterstützt."
+"<a href=\"https://developer.gnome.org/pango/stable/PangoMarkupFormat.html"
+"\">Pango Text Attribute Markup</a> wird unterstützt."
 
 #: ../plugins/osd/osd_preferences.ui:87
 msgid "Display Format"
@@ -4694,20 +4783,14 @@ msgid ""
 "plugin from gst-plugins-bad is installed"
 msgstr ""
 "Bietet einen manuellen BPM-Zähler und eine automatische BPM-Erkennung, wenn "
-"das bpmdetect-Plugin aus dem Paket gst-plugins-bad installiert sind."
+"das bpmdetect-Plugin aus dem Paket gst-plugins-bad installiert sind"
 
 #: ../plugins/cd/PLUGININFO:3
 msgid "CD Playback"
 msgstr "CD-Wiedergabe"
 
 #: ../plugins/cd/PLUGININFO:4
-#, fuzzy, python-format
-#| msgid ""
-#| "Adds support for playing audio CDs.\n"
-#| "\n"
-#| "Requires UDisks2 to autodetect CDs\n"
-#| "Requires python-libdiscid (%s) and python-musicbrainzngs (%s) to look up "
-#| "tags."
+#, python-format
 msgid ""
 "Adds support for playing audio CDs.\n"
 "\n"
@@ -4718,7 +4801,8 @@ msgstr ""
 "Ermöglicht die Wiedergabe von Audio-CDs.\n"
 "\n"
 "Benötigt udisks2 für die automatische Erkennung von CDs\n"
-"Benötigt cddb-py (%s) für die Suche nach Schlagwörtern."
+"Benötigt python-libdiscid (%s) und python-musicbrainzngs (%s) für die Suche "
+"nach Schlagwörtern."
 
 #: ../plugins/cd/PLUGININFO:5 ../plugins/massstorage/PLUGININFO:5
 msgid "Devices"
@@ -5147,12 +5231,8 @@ msgid "Listen to, explore, or manage your audio collection"
 msgstr "Audiodateien und -streams wiedergeben, verwalten und Tags bearbeiten"
 
 #: ../data/exaile.desktop.in:14
-msgid "Music;Player;Library;Collection;MP3;"
-msgstr "Musik;Abspielsoftware;Media-Bibliothek;Sammlung;MP3;"
-
-#: ../data/exaile.desktop.in:15
-msgid "player,mp3,ogg"
-msgstr ""
+msgid "Music;Player;Library;Collection;MP3;OGG;FLAC;MP4"
+msgstr "Musik;Abspieler;Bibliothek;Sammlung;MP3;OGG;FLAC;MP4"
 
 #: ../data/exaile.appdata.xml.in:9
 msgid ""
@@ -5161,6 +5241,11 @@ msgid ""
 "lyrics fetching, streaming internet radio, tabbed playlists, smart playlists "
 "with extensive filtering/search capabilities, and much more."
 msgstr ""
+"Exaile ist ein Musikplayer mit einer einfachen Benutzeroberfläche und "
+"leistungsstarken Musikverwaltungsfunktionen. Zu den Funktionen gehören das "
+"automatische Abrufen von Albumcovern, Liedtexten, Streaming von "
+"Internetradio, Wiedergabelisten mit Registerkarten, intelligente "
+"Wiedergabelisten mit umfangreichen Filter-/Suchfunktionen und vieles mehr."
 
 #: ../data/exaile.appdata.xml.in:15
 msgid ""
@@ -5170,6 +5255,21 @@ msgid ""
 "players, podcasts, internet radio such as icecast and Soma.FM, ReplayGain, "
 "output via a secondary output device (great for DJs!), and much more."
 msgstr ""
+"Exaile wurde mit Python und GTK+ geschrieben und ist über Plugins leicht "
+"erweiterbar. Mit Exaile werden über 50 Plugins verteilt, die erweitertes "
+"Track-Tagging, last.fm-Scrobbeling, Unterstützung für tragbare Mediaplayer, "
+"Podcasts, Internetradio wie Icecast und Soma.FM, ReplayGain und die Ausgabe "
+"über ein sekundäres Ausgabegerät (ideal für DJs) umfassen und vieles mehr."
+
+#: ../data/ui/preferences/collection.ui:87
+msgid ""
+"Use this experimental feature to read and write ratings in audio file "
+"metadata instead of database, if possible.\n"
+"This feature should work for MP3, MP4, FLAC and OGG. "
+msgstr ""
+
+#~ msgid "Music;Player;Library;Collection;MP3;"
+#~ msgstr "Musik;Abspielsoftware;Media-Bibliothek;Sammlung;MP3;"
 
 #, python-format
 #~ msgid ""
@@ -5207,12 +5307,10 @@ msgstr ""
 #~ msgstr "_Schließen"
 
 #, fuzzy
-#~| msgid "Display track counts in collection"
 #~ msgid "Show total count of tracks in collection"
 #~ msgstr "Anzahl der Titel in der Bibliothek anzeigen"
 
 #, fuzzy
-#~| msgid "Disallow playing new tracks when another track is playing"
 #~ msgid "Disable new track when playing"
 #~ msgstr ""
 #~ "Aktuellen Titel zu Ende spielen, bevor neues Stück wiedergegeben wird"
@@ -5224,7 +5322,6 @@ msgstr ""
 #~ msgstr "Automatisch weitergehen"
 
 #, fuzzy
-#~| msgid "Audio Device:"
 #~ msgid "Main Audio Device"
 #~ msgstr "Gerät hinzufügen:"
 
