@@ -79,15 +79,15 @@
         <property name="can_focus">False</property>
         <property name="layout_style">end</property>
         <child>
-          <object class="GtkButton" id="install_plugin_button">
-            <property name="label" translatable="yes">Add _Plugin File</property>
+          <object class="GtkButton" id="add_order">
+            <property name="label" translatable="yes">Add _Order</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="image">image1</property>
             <property name="use_underline">True</property>
             <property name="always_show_image">True</property>
-            <signal name="clicked" handler="on_install_plugin_button_clicked" swapped="no"/>
+            <signal name="clicked" handler="_on_button_add_clicked" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>
