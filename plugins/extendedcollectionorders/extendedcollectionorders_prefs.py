@@ -1,9 +1,10 @@
 
-import os
+import os, json
 from gi.repository import Gtk, GObject, Gdk
 
 from xl.nls import gettext as _
 from xlgui.widgets import common, dialogs
+from xl import settings
 
 
 
@@ -29,7 +30,7 @@ class eco_prefs():
         remove_cellrenderer = common.ClickableCellRendererPixbuf()
         remove_cellrenderer.props.icon_name = 'edit-delete'
         remove_cellrenderer.props.xalign = 1
-        remove_cellrenderer.connect('clicked', self._on_remove_cellrenderer_clicked)
+        # remove_cellrenderer.connect('clicked', self._on_remove_cellrenderer_clicked)
 
         name_column = builder.get_object('name_column')
         name_column.pack_start(remove_cellrenderer, True)
@@ -39,12 +40,14 @@ class eco_prefs():
 
         # self.custom_orders = settings.get_option('custom_orders', [])
 
-        self.custom_orders = [
-            {'name': "Artist - Genre - By Date", 'levels': 'artist, genre', 'display': '$date - $title',
-             'sorting': 'date, title'},
-            {'name': "Genre - Artist - By Date", 'levels': 'genre, artist', 'display': '$date - $title',
-             'sorting': 'date, title'}
-        ]
+        # self.custom_orders = [
+        #     {'name': "Artist - Genre - By Date", 'levels': 'artist, genre', 'display': '$date - $title',
+        #      'sorting': 'date, title'},
+        #     {'name': "Genre - Artist - By Date", 'levels': 'genre, artist', 'display': '$date - $title',
+        #      'sorting': 'date, title'}
+        # ]
+
+        self.custom_orders = custom_orders()
 
         self._grid_refresh()
 
@@ -71,8 +74,8 @@ class eco_prefs():
 
     def _on_remove_cellrenderer_clicked(self, cellrenderer, path):
         order_number = self.model[path][1]
-        del self.custom_orders[order_number]
-        self._grid_refresh()
+        # del self.custom_orders[order_number]
+        # self._grid_refresh()
 
     def _order_edit(self, order_number):
 
@@ -105,5 +108,31 @@ class eco_prefs():
             self.custom_orders[order_number] = order
         else:
             self.custom_orders.append(order)
+
         self._grid_refresh()
 
+class custom_orders(list):
+
+    settings_name = 'eco/orders'
+    def __init__(self):
+        super().__init__(self)
+        setting = settings.get_option(self.settings_name, None)
+        if setting is not None:
+            orders = json.loads(setting)
+            for order in orders:
+                super().append(order)
+
+    def append(self, entry):
+        super().append(entry)
+        js = json.dumps(self)
+        settings.set_option(self.settings_name, js)
+
+    def __delitem__(self, arg):
+        super().__delitem__(arg)
+        js = json.dumps(self)
+        settings.set_option(self.settings_name, js)
+
+    def __setitem__(self, index, entry):
+        super().__setitem__(index, entry)
+        js = json.dumps(self)
+        settings.set_option(self.settings_name, js)
