@@ -4,6 +4,7 @@ from xl.nls import gettext as _
 from xlgui.panel.collection import Order
 
 from . import extendedcollectionorders_prefs
+import json
 
 class ExtendedCollectionOrders:
     """
@@ -41,7 +42,29 @@ class ExtendedCollectionOrders:
     def add_orders(self):
         self.collection_panel = self.exaile.gui.panel_notebook.panels['collection'].panel
 
-        if settings.get_option('extendedcollectionorders/eco1', False):
+        setting = settings.get_option('eco/orders', None)
+        # if setting is None:
+        #     return
+
+        orders = json.loads(setting)
+
+        for order in orders:
+            levels = order['levels'].split(',')
+            sorting = order['sorting'].split(',')
+            display = order['display'].split(',')
+
+            final_sorting = display
+            final_display = '$' + ' - $'.join(display)
+
+            final = [final_sorting, final_display, final_sorting]
+            levels.append(final)
+
+            lvls = tuple(levels)
+
+            new_order = Order(order['name'], lvls)
+            self.collection_panel.orders.append(new_order)
+
+        if settings.get_option('extendedcollectionorders/eco1', False) or True:
             new_order = Order(_("Genre - Artist - By Date"),
               (
                   'genre', #Tree Level 1
@@ -55,8 +78,8 @@ class ExtendedCollectionOrders:
             )
             self.collection_panel.orders.append(new_order)
 
-        if settings.get_option('extendedcollectionorders/eco2', False):
-            new_order = Order(_("Artist - Genre - By Date"),
+        if settings.get_option('extendedcollectionorders/eco2', False) or True:
+            new_order = Order("Artist - Genre - By Date",
               (
                   (('artist', 'album'), "$artist - $album", ("album",)), # Tree Level 1
                   'genre', # Tree Level 2
@@ -69,7 +92,7 @@ class ExtendedCollectionOrders:
             )
             self.collection_panel.orders.append(new_order)
 
-        if settings.get_option('extendedcollectionorders/eco3', False):
+        if settings.get_option('extendedcollectionorders/eco3', False) or True:
             new_order = Order(_("Artist - Track - By Track title"),
                               (
                                   'artist',  # Tree Level 1

@@ -30,7 +30,7 @@ class eco_prefs():
         remove_cellrenderer = common.ClickableCellRendererPixbuf()
         remove_cellrenderer.props.icon_name = 'edit-delete'
         remove_cellrenderer.props.xalign = 1
-        # remove_cellrenderer.connect('clicked', self._on_remove_cellrenderer_clicked)
+        remove_cellrenderer.connect('clicked', self._on_remove_cellrenderer_clicked)
 
         name_column = builder.get_object('name_column')
         name_column.pack_start(remove_cellrenderer, True)
@@ -74,8 +74,11 @@ class eco_prefs():
 
     def _on_remove_cellrenderer_clicked(self, cellrenderer, path):
         order_number = self.model[path][1]
-        # del self.custom_orders[order_number]
-        # self._grid_refresh()
+        check = dialogs.yesno(self.parent, 'really delete?')
+        if check != Gtk.ResponseType.YES:
+            return
+        del self.custom_orders[order_number]
+        self._grid_refresh()
 
     def _order_edit(self, order_number):
 
@@ -86,9 +89,9 @@ class eco_prefs():
 
         dialog = dialogs.MultiTextEntryDialog(self.parent, _("Add Radio Station"))
 
-        dialog.add_field(_("Name:"), order['name'])
-        dialog.add_field(_("Tree Levels:"), order['levels'])
-        dialog.add_field(_("Display:"), order['display'])
+        dialog.add_field(_("Name:"), order['name'], _('name of your order'))
+        dialog.add_field(_("Tree Levels:"), order['levels'], _('comma separated list of the nodes in the tree view. Right now it\'s not possible to use more than one tag'))
+        dialog.add_field(_("Display:"), order['display'], )
         dialog.add_field(_("Sorting:"), order['sorting'])
 
         result = dialog.run()
