@@ -1,4 +1,3 @@
-from gi.repository import Gtk
 from xl import event, settings
 from xl.nls import gettext as _
 from xlgui.panel.collection import Order

@@ -1,12 +1,10 @@
 
 import os, json
-from gi.repository import Gtk, GObject, Gdk
+from gi.repository import Gtk
 
 from xl.nls import gettext as _
 from xlgui.widgets import common, dialogs
 from xl import settings
-
-
 
 name = _('Extended Collections')
 basedir = os.path.dirname(os.path.realpath(__file__))
