@@ -50,7 +50,6 @@ class ExtendedCollectionOrders:
 
         for order in orders:
             levels = order['levels'].split(',')
-            sorting = order['sorting'].split(',')
             display = order['display'].split(',')
 
             final_sorting = display
@@ -58,7 +57,6 @@ class ExtendedCollectionOrders:
 
             final = [final_sorting, final_display, final_sorting]
             levels.append(final)
-
             lvls = tuple(levels)
 
             new_order = Order(order['name'], lvls)

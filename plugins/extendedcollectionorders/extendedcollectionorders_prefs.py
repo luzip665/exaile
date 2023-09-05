@@ -74,7 +74,7 @@ class eco_prefs():
 
     def _on_remove_cellrenderer_clicked(self, cellrenderer, path):
         order_number = self.model[path][1]
-        check = dialogs.yesno(self.parent, 'really delete?')
+        check = dialogs.yesno(self.parent, _('really delete?'))
         if check != Gtk.ResponseType.YES:
             return
         del self.custom_orders[order_number]
@@ -85,14 +85,13 @@ class eco_prefs():
         if order_number > -1:
             order = self.custom_orders[order_number]
         else:
-            order = {'name': "", 'levels': '', 'display': '', 'sorting': ''}
+            order = {'name': "", 'levels': '', 'display': ''}
 
-        dialog = dialogs.MultiTextEntryDialog(self.parent, _("Add Radio Station"))
+        dialog = dialogs.MultiTextEntryDialog(self.parent, _("Add or edit custom order"))
 
         dialog.add_field(_("Name:"), order['name'], _('name of your order'))
-        dialog.add_field(_("Tree Levels:"), order['levels'], _('comma separated list of the nodes in the tree view. Right now it\'s not possible to use more than one tag'))
-        dialog.add_field(_("Display:"), order['display'], )
-        dialog.add_field(_("Sorting:"), order['sorting'])
+        dialog.add_field(_("Tree Levels:"), order['levels'], _('comma separated list of the nodes in the tree view. Right now it\'s not possible to use more than one tag per level'))
+        dialog.add_field(_("Display:"), order['display'], _('comma separated list of the tags to use for displaying single tracks as leaves in the tree. Tags are joined with a hyphen'))
 
         result = dialog.run()
         dialog.hide()
@@ -100,12 +99,11 @@ class eco_prefs():
         if result != Gtk.ResponseType.OK:
             return
 
-        (name, levels, display, sorting) = dialog.get_values()
+        (name, levels, display) = dialog.get_values()
 
         order['name'] = name
         order['levels'] = levels
         order['display'] = display
-        order['sorting'] = sorting
 
         if order_number > -1:
             self.custom_orders[order_number] = order
