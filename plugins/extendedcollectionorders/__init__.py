@@ -13,6 +13,7 @@ class ExtendedCollectionOrders:
 
     collection_panel = None
     last_active_view = None
+    custom_orders = []
 
     def enable(self, exaile):
         """
@@ -20,12 +21,12 @@ class ExtendedCollectionOrders:
         """
         self.exaile = exaile
         self.last_active_view = settings.get_option('gui/collection_active_view')
-        event.add_callback(self._on_option_activate, 'extendedcollectionorders_option_set')
+        event.add_callback(self._on_option_update, 'eco_option_set')
 
         pass
 
-    def _on_option_activate(self, event_name, event_source, option):
-        self.add_orders()
+    def _on_option_update(self, event_name, event_source, option):
+        self.populate_orders()
         pass
 
     def disable(self, exaile):
@@ -36,14 +37,17 @@ class ExtendedCollectionOrders:
         Called when the gui is loaded
         Before that there is no panel
         """
-        self.add_orders()
+        self.populate_orders()
 
-    def add_orders(self):
+    def populate_orders(self):
+        setting = settings.get_option('eco/orders', None)
+        if setting is None:
+            return
+
         self.collection_panel = self.exaile.gui.panel_notebook.panels['collection'].panel
 
-        setting = settings.get_option('eco/orders', None)
-        # if setting is None:
-        #     return
+        for order in self.custom_orders:
+            self.collection_panel.orders.remove(order)
 
         orders = json.loads(setting)
 
@@ -60,48 +64,50 @@ class ExtendedCollectionOrders:
 
             new_order = Order(order['name'], lvls)
             self.collection_panel.orders.append(new_order)
+            self.custom_orders.append(new_order)
 
-        if settings.get_option('extendedcollectionorders/eco1', False) or True:
-            new_order = Order(_("Genre - Artist - By Date"),
-              (
-                  'genre', #Tree Level 1
-                  'artist', # Tree Level 2
-                  (
-                      ('date', 'title'), # Sorting
-                      "$date - $title", # Track display
-                      ("title", 'date'), # Search fields
-                   )
-              )
-            )
-            self.collection_panel.orders.append(new_order)
+        # if settings.get_option('extendedcollectionorders/eco1', False) or True:
+        #     new_order = Order(_("Genre - Artist - By Date"),
+        #       (
+        #           'genre', #Tree Level 1
+        #           'artist', # Tree Level 2
+        #           (
+        #               ('date', 'title'), # Sorting
+        #               "$date - $title", # Track display
+        #               ("title", 'date'), # Search fields
+        #            )
+        #       )
+        #     )
+        #     self.collection_panel.orders.append(new_order)
+        #
+        # if settings.get_option('extendedcollectionorders/eco2', False) or True:
+        #     new_order = Order("Artist - Genre - By Date",
+        #       (
+        #           (('artist', 'album'), "$artist - $album", ("album",)), # Tree Level 1
+        #           'genre', # Tree Level 2
+        #           (
+        #               ('date', 'title'), # Sorting
+        #               "$date - $title", # Track display
+        #               ("title", 'date'), # Search fields
+        #            )
+        #       )
+        #     )
+        #     self.collection_panel.orders.append(new_order)
+        #
+        # if settings.get_option('extendedcollectionorders/eco3', False) or True:
+        #     new_order = Order(_("Artist - Track - By Track title"),
+        #                       (
+        #                           'artist',  # Tree Level 1
+        #                           (
+        #                               ('title', 'title'),  # Sorting
+        #                               "$title",  # Track display
+        #                               ("title", 'date'),  # Search fields
+        #                           )
+        #                       )
+        #                       )
+        #     self.collection_panel.orders.append(new_order)
 
-        if settings.get_option('extendedcollectionorders/eco2', False) or True:
-            new_order = Order("Artist - Genre - By Date",
-              (
-                  (('artist', 'album'), "$artist - $album", ("album",)), # Tree Level 1
-                  'genre', # Tree Level 2
-                  (
-                      ('date', 'title'), # Sorting
-                      "$date - $title", # Track display
-                      ("title", 'date'), # Search fields
-                   )
-              )
-            )
-            self.collection_panel.orders.append(new_order)
-
-        if settings.get_option('extendedcollectionorders/eco3', False) or True:
-            new_order = Order(_("Artist - Track - By Track title"),
-                              (
-                                  'artist',  # Tree Level 1
-                                  (
-                                      ('title', 'title'),  # Sorting
-                                      "$title",  # Track display
-                                      ("title", 'date'),  # Search fields
-                                  )
-                              )
-                              )
-            self.collection_panel.orders.append(new_order)
-
+        self.collection_panel.repopulate_choices()
         settings.set_option('gui/collection_active_view', self.last_active_view)
 
     def on_exaile_loaded(self):
