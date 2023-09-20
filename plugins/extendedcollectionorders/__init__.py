@@ -67,47 +67,6 @@ class ExtendedCollectionOrders:
             self.collection_panel.orders.append(new_order)
             self.custom_orders.append(new_order)
 
-        # if settings.get_option('extendedcollectionorders/eco1', False) or True:
-        #     new_order = Order(_("Genre - Artist - By Date"),
-        #       (
-        #           'genre', #Tree Level 1
-        #           'artist', # Tree Level 2
-        #           (
-        #               ('date', 'title'), # Sorting
-        #               "$date - $title", # Track display
-        #               ("title", 'date'), # Search fields
-        #            )
-        #       )
-        #     )
-        #     self.collection_panel.orders.append(new_order)
-        #
-        # if settings.get_option('extendedcollectionorders/eco2', False) or True:
-        #     new_order = Order("Artist - Genre - By Date",
-        #       (
-        #           (('artist', 'album'), "$artist - $album", ("album",)), # Tree Level 1
-        #           'genre', # Tree Level 2
-        #           (
-        #               ('date', 'title'), # Sorting
-        #               "$date - $title", # Track display
-        #               ("title", 'date'), # Search fields
-        #            )
-        #       )
-        #     )
-        #     self.collection_panel.orders.append(new_order)
-        #
-        # if settings.get_option('extendedcollectionorders/eco3', False) or True:
-        #     new_order = Order(_("Artist - Track - By Track title"),
-        #                       (
-        #                           'artist',  # Tree Level 1
-        #                           (
-        #                               ('title', 'title'),  # Sorting
-        #                               "$title",  # Track display
-        #                               ("title", 'date'),  # Search fields
-        #                           )
-        #                       )
-        #                       )
-        #     self.collection_panel.orders.append(new_order)
-
         self.collection_panel.repopulate_choices()
         settings.set_option('gui/collection_active_view', self.last_active_view)
 
