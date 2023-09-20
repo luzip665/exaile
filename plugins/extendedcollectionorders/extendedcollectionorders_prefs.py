@@ -3,6 +3,7 @@ import os, json
 from gi.repository import Gtk
 
 from xl.nls import gettext as _
+from xl.metadata import tags
 from xlgui.widgets import common, dialogs
 from xl import settings
 
@@ -87,9 +88,15 @@ class eco_prefs():
 
         dialog = dialogs.MultiTextEntryDialog(self.parent, _("Add or edit custom order"))
 
+        tag_data = tags.tag_data
+        usable_tags = ''
+        for k, v in tag_data.items():
+            if v:
+                usable_tags = usable_tags + v.tag_name + ' (' + v.translated_name + ')\n'
+
         dialog.add_field(_("Name:"), order['name'], _('name of your order'))
-        dialog.add_field(_("Tree Levels:"), order['levels'], _('comma separated list of the nodes in the tree view. Right now it\'s not possible to use more than one tag per level'))
-        dialog.add_field(_("Display:"), order['display'], _('comma separated list of the tags to use for displaying single tracks as leaves in the tree. Tags are joined with a hyphen'))
+        dialog.add_field(_("Tree Levels:"), order['levels'], _('comma separated list of the nodes in the tree view. Right now it\'s not possible to use more than one tag per level. Available tags are ' + usable_tags))
+        dialog.add_field(_("Display:"), order['display'], _('comma separated list of the tags to use for displaying single tracks as leaves in the tree. Tags are joined with a hyphen. ' + usable_tags))
 
         result = dialog.run()
         dialog.hide()

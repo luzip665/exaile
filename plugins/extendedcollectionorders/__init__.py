@@ -48,6 +48,7 @@ class ExtendedCollectionOrders:
 
         for order in self.custom_orders:
             self.collection_panel.orders.remove(order)
+        self.custom_orders = []
 
         orders = json.loads(setting)
 
