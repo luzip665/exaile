@@ -69,7 +69,7 @@ tag_data = {
     'part':             None,
     'performer':        _TD(N_('Performer'),    'text'),
     'title':            _TD(N_('Title'),        'text'),
-    'tracknumber':      _TD(N_('Track Number'), 'dblnum', min=0, max=500),
+    'tracknumber':      _TD(N_('Track'),        'dblnum', min=0, max=500),
     'version':          _TD(N_('Version'),      'text'),
     'website':          _TD(N_('Website'),      'text'),
 
