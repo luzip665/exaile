@@ -5,6 +5,7 @@ from xlgui.panel.collection import Order
 from . import extendedcollectionorders_prefs
 import json
 
+
 class ExtendedCollectionOrders:
     """
     Plugin adds some buttons on the bottom line of the playlists grid to
@@ -44,7 +45,9 @@ class ExtendedCollectionOrders:
         if setting is None:
             return
 
-        self.collection_panel = self.exaile.gui.panel_notebook.panels['collection'].panel
+        self.collection_panel = self.exaile.gui.panel_notebook.panels[
+            'collection'
+        ].panel
 
         for order in self.custom_orders:
             self.collection_panel.orders.remove(order)
@@ -76,5 +79,6 @@ class ExtendedCollectionOrders:
 
     def get_preferences_pane(self):
         return extendedcollectionorders_prefs
+
 
 plugin_class = ExtendedCollectionOrders

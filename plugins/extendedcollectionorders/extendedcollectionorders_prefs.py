@@ -1,4 +1,3 @@
-
 import os, json
 from gi.repository import Gtk
 
@@ -11,12 +10,12 @@ name = _('Extended Collections')
 basedir = os.path.dirname(os.path.realpath(__file__))
 ui = os.path.join(basedir, "eco_pane.ui")
 
+
 def init(dialog, builder):
     prefs = eco_prefs(dialog, builder)
 
 
-class eco_prefs():
-
+class eco_prefs:
     def __init__(self, dialog, builder):
         self.builder = builder
         self.parent = dialog.window
@@ -59,15 +58,12 @@ class eco_prefs():
 
         i = 0
         for order in self.custom_orders:
-            it = self.model.append(
-                None, (order['name'], i)
-            )
+            it = self.model.append(None, (order['name'], i))
             i += 1
 
         self.list.set_model(self.model)
 
-
-    def _on_row_activated(self,  model, path, iter):
+    def _on_row_activated(self, model, path, iter):
         order_number = self.model[path][1]
         self._order_edit(order_number)
 
@@ -80,24 +76,31 @@ class eco_prefs():
         self._grid_refresh()
 
     def _order_edit(self, order_number):
-
         if order_number > -1:
             order = self.custom_orders[order_number]
         else:
             order = {'name': "", 'levels': '', 'display': ''}
 
-        dialog = dialogs.MultiTextEntryDialog(self.parent, _("Add or edit custom order"))
+        dialog = dialogs.MultiTextEntryDialog(
+            self.parent, _("Add or edit custom order")
+        )
 
         tag_data = tags.tag_data
         usable_tags = ''
         for k, v in tag_data.items():
             if v:
-                usable_tags = usable_tags + v.tag_name + ' (' + v.translated_name + ')\n'
+                usable_tags = (
+                    usable_tags + v.tag_name + ' (' + v.translated_name + ')\n'
+                )
 
-        tree_level_hint = _('Comma separated list of the nodes in the tree view. Right now it\'s not possible to use more than one tag per level.\n'
-                            'Every tag can be used.')
-        display_hint = _('Comma separated list of the tags to use for displaying single tracks as leaves in the tree. Tags are joined with a hyphen.\n'
-                         'Every tag can be used.')
+        tree_level_hint = _(
+            'Comma separated list of the nodes in the tree view. Right now it\'s not possible to use more than one tag per level.\n'
+            'Every tag can be used.'
+        )
+        display_hint = _(
+            'Comma separated list of the tags to use for displaying single tracks as leaves in the tree. Tags are joined with a hyphen.\n'
+            'Every tag can be used.'
+        )
 
         dialog.add_field(_("Name:"), order['name'], _('Name of your order'))
         dialog.add_field(_("Tree Levels:"), order['levels'], tree_level_hint)
@@ -122,9 +125,10 @@ class eco_prefs():
 
         self._grid_refresh()
 
-class custom_orders(list):
 
+class custom_orders(list):
     settings_name = 'eco/orders'
+
     def __init__(self):
         super().__init__(self)
         setting = settings.get_option(self.settings_name, None)
