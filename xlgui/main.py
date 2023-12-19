@@ -385,6 +385,8 @@ class MainWindow(GObject.GObject):
             }
         )
 
+        self.window.connect("key-press-event", self._on_key_press_event)
+
         event.add_ui_callback(
             self.on_playback_end, 'playback_player_end', player.PLAYER
         )
@@ -409,6 +411,19 @@ class MainWindow(GObject.GObject):
         self._on_option_set('gui_option_set', settings, 'gui/show_info_area_covers')
         self._on_option_set('gui_option_set', settings, 'gui/show_status_bar')
         event.add_ui_callback(self._on_option_set, 'option_set')
+
+    def _on_key_press_event(self, window, event):
+        if event.keyval == Gdk.KEY_space:
+            try:
+                position, track = self.get_selected_items()[0]
+            except IndexError:
+                return True  # Prevent 'row-activated'
+
+            self._play_track_at(position, track, True, False)
+
+            return True  # Prevent 'row-activated'
+
+        pass
 
     def _connect_panel_events(self):
         """
