@@ -414,16 +414,9 @@ class MainWindow(GObject.GObject):
 
     def _on_key_press_event(self, window, event):
         if event.keyval == Gdk.KEY_space:
-            try:
-                position, track = self.get_selected_items()[0]
-            except IndexError:
-                return True  # Prevent 'row-activated'
-
-            self._play_track_at(position, track, True, False)
-
-            return True  # Prevent 'row-activated'
-
-        pass
+            # self.playpause()
+            page = self.get_selected_page()
+            pass
 
     def _connect_panel_events(self):
         """
