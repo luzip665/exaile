@@ -34,8 +34,10 @@ from gi.repository import Pango
 import logging
 import sys
 
+import xl.player.queue
 from xl.nls import gettext as _
 from xl.playlist import Playlist, is_valid_playlist, import_playlist
+from xl.player import queue
 from xl import common, event, main, player, providers, settings, trax, xdg
 
 from xlgui.widgets.common import AutoScrollTreeView
@@ -1065,6 +1067,7 @@ class PlaylistView(AutoScrollTreeView, providers.ProviderHandler):
             elif self.player.queue.is_play_enabled():
                 self.playlist.set_current_position(position)
                 self.player.queue.set_current_playlist(self.playlist)
+                self.player.queue.set_last_playlist(None)
                 self.player.queue.play(track=track)
         elif self.playlist is not self.player.queue:
             self.player.queue.append(track)
@@ -1987,6 +1990,13 @@ class PlaylistModel(Gtk.ListStore):
 
         if spat:
             pixbuf = self.stop_pixbuf.pixbuf
+
+        if isinstance(playlist, xl.player.queue.PlayQueue):
+            if playlist.current_position > rowidx:
+                sensitive = False
+                weight = Pango.Weight.NORMAL
+                return None, sensitive, weight
+            pass
 
         if playlist is self.player.queue.current_playlist:
             if (

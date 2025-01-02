@@ -58,7 +58,7 @@ class PlayQueue(playlist.Playlist):
 
         self.__queue_has_tracks_val = False
         self.__current_playlist = self  # this should never be None
-        self.last_playlist = None
+        self.__last_playlist = None
         self.player = player
 
         # hack for making docs work
@@ -137,6 +137,24 @@ class PlayQueue(playlist.Playlist):
     #: The playlist currently processed in the queue
     current_playlist = property(
         lambda self: self.__current_playlist, set_current_playlist
+    )
+
+    def set_last_playlist(self, playlist):
+        """
+        Sets the playlist to be processed when the queue finished
+
+        :param playlist: the playlist to process
+        :type playlist: :class:`xl.playlist.Playlist`
+
+        """
+        if playlist is self.__last_playlist:
+            return
+
+        self.__last_playlist = playlist
+
+    #: The playlist currently processed in the queue
+    last_playlist = property(
+        lambda self: self.__last_playlist, set_last_playlist
     )
 
     def get_next(self):
@@ -225,7 +243,7 @@ class PlayQueue(playlist.Playlist):
                     # otherwise set current playlist to queue and store last playlist
                     if self.current_playlist is not self:
                         self.last_playlist = self.current_playlist
-                    self.current_playlist = self
+                        self.current_playlist = self
 
             if track is None and self.current_playlist is not self:
                 track = self.current_playlist.next()
