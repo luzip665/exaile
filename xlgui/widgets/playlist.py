@@ -1995,8 +1995,7 @@ class PlaylistModel(Gtk.ListStore):
             if playlist.current_position > rowidx:
                 sensitive = False
                 weight = Pango.Weight.NORMAL
-                return None, sensitive, weight
-            pass
+                return pixbuf, sensitive, weight
 
         if playlist is self.player.queue.current_playlist:
             if (
@@ -2043,6 +2042,15 @@ class PlaylistModel(Gtk.ListStore):
             self.remove(self.iter_nth_child(None, position))
 
     def on_current_position_changed(self, event_type, playlist, positions):
+        if isinstance(self.playlist, xl.player.queue.PlayQueue):
+            # Update all rows
+            itr = self.get_iter_first()
+            pos = 0
+            while itr and pos<len(self):
+                self.set(itr, self.PARAM_COLS, self._compute_row_params(pos))
+                itr = self.iter_next(itr)
+                pos += 1
+
         for position in positions:
             if position < 0:
                 continue
