@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exaile\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-02 12:09+1000\n"
-"PO-Revision-Date: 2024-12-08 22:00+0000\n"
+"POT-Creation-Date: 2025-01-02 23:02+0100\n"
+"PO-Revision-Date: 2025-01-03 07:04+0000\n"
 "Last-Translator: Luzip665 <luzip665@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/exaile/master/de/>"
 "\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 "X-Launchpad-Export-Date: 2014-08-12 06:25+0000\n"
 
 #: ../xl/covers.py:523 ../data/ui/trackproperties_dialog.ui:183
@@ -1182,7 +1182,7 @@ msgstr "Album-Interpret (Datum – Album)"
 msgid "Collection"
 msgstr "Bibliothek"
 
-#: ../xlgui/panel/collection.py:286
+#: ../xlgui/panel/collection.py:290
 msgid "Rescan Collection"
 msgstr "Bibliothek neu einlesen"
 
@@ -1300,7 +1300,7 @@ msgid "Add Radio Station"
 msgstr "Radiostation hinzufügen"
 
 #: ../xlgui/panel/radio.py:199 ../data/ui/widgets/filter_dialog.ui:58
-#: ../plugins/customcollectionorders/cco_prefs.py:96
+#: ../plugins/customcollectionorders/cco_prefs.py:118
 msgid "Name:"
 msgstr "Name:"
 
@@ -1433,44 +1433,44 @@ msgid_plural "Failed plugins: %s"
 msgstr[0] "Fehlgeschlagenes Plugin: %s"
 msgstr[1] "Fehlgeschlagene Plugins: %s"
 
-#: ../xlgui/preferences/plugin.py:235
+#: ../xlgui/preferences/plugin.py:238
 msgid "Do you really want to remove this plugin?"
 msgstr "Möchten Sie diese Plugin wirklich entfernen?"
 
-#: ../xlgui/preferences/plugin.py:245
+#: ../xlgui/preferences/plugin.py:248
 msgid "Could not remove plugin!"
 msgstr "Plugin konnte nicht entfernt werden!"
 
-#: ../xlgui/preferences/plugin.py:261 ../xlgui/preferences/plugin.py:384
+#: ../xlgui/preferences/plugin.py:264 ../xlgui/preferences/plugin.py:387
 msgid "Could not disable plugin!"
 msgstr "Plugin konnte nicht deaktiviert werden!"
 
-#: ../xlgui/preferences/plugin.py:271 ../xlgui/preferences/plugin.py:378
+#: ../xlgui/preferences/plugin.py:274 ../xlgui/preferences/plugin.py:381
 msgid "Could not enable plugin!"
 msgstr "Plugin konnte nicht aktiviert werden!"
 
-#: ../xlgui/preferences/plugin.py:280
+#: ../xlgui/preferences/plugin.py:283
 msgid "Choose a Plugin"
 msgstr "Plugin auswählen"
 
-#: ../xlgui/preferences/plugin.py:291
+#: ../xlgui/preferences/plugin.py:294
 msgid "Plugin Archives"
 msgstr "Plugin-Archive"
 
-#: ../xlgui/preferences/plugin.py:298 ../xlgui/widgets/dialogs.py:737
+#: ../xlgui/preferences/plugin.py:301 ../xlgui/widgets/dialogs.py:737
 #: ../xlgui/widgets/dialogs.py:913
 msgid "All Files"
 msgstr "Alle Dateien"
 
-#: ../xlgui/preferences/plugin.py:317
+#: ../xlgui/preferences/plugin.py:320
 msgid "Plugin already exists!"
 msgstr "Dieses Plugin ist bereits installiert!"
 
-#: ../xlgui/preferences/plugin.py:318
+#: ../xlgui/preferences/plugin.py:321
 msgid "Do you want to override it?"
 msgstr "Möchten Sie es wirklich überschreiben?"
 
-#: ../xlgui/preferences/plugin.py:326
+#: ../xlgui/preferences/plugin.py:329
 msgid "Plugin file installation failed!"
 msgstr "Installation der Plugindatei fehlgeschlagen!"
 
@@ -2620,7 +2620,7 @@ msgid "Remove track from queue upon playback"
 msgstr "Bei Wiedergabe Titel aus der Warteschlange entfernen"
 
 #: ../data/ui/preferences/playback.ui:221
-msgid "Remove after playback"
+msgid "Remove track from queue after playback"
 msgstr "Erst nach Wiedergabe entfernen"
 
 #: ../data/ui/preferences/playback.ui:236
@@ -2738,7 +2738,6 @@ msgstr ""
 "Titel in die Wiedergabeliste einreihen statt ihn wiederzugeben"
 
 #: ../data/ui/preferences/plugin.ui:66
-#: ../plugins/customcollectionorders/cco_pane.ui:51
 msgid "Plugin"
 msgstr "Plugin"
 
@@ -3094,43 +3093,49 @@ msgstr "CD-Nummer"
 msgid "Play count"
 msgstr "Wiedergabeanzahl"
 
-#: ../plugins/customcollectionorders/cco_prefs.py:9
+#: ../plugins/customcollectionorders/cco_prefs.py:10
 msgid "Custom Collections"
 msgstr "Bibliotheksfilter"
 
-#: ../plugins/customcollectionorders/cco_prefs.py:63
-msgid "really delete?"
-msgstr ""
+#: ../plugins/customcollectionorders/cco_prefs.py:85
+msgid "Really delete this order?"
+msgstr "Soll dieser Filter wirklich gelöscht werden?"
 
-#: ../plugins/customcollectionorders/cco_prefs.py:76
+#: ../plugins/customcollectionorders/cco_prefs.py:98
 msgid "Add or edit custom order"
-msgstr ""
+msgstr "Hinzufügen oder Bearbeiten eines Filters"
 
-#: ../plugins/customcollectionorders/cco_prefs.py:88
+#: ../plugins/customcollectionorders/cco_prefs.py:110
 msgid ""
-"Comma separated list of the nodes in the tree view. Right now it's not "
-"possible to use more than one tag per level.\n"
+"Comma separated list of tags to use as nodes in the tree view. Right now "
+"it's not possible to use more than one tag per node.\n"
 "Every tag can be used."
 msgstr ""
+"Kommagetrennte Liste der Tags, die als Knoten im Baum verwendet werden "
+"sollen. Derzeit ist es nur möglich, einen Tag pro Knoten anzugeben.\n"
+"Jeder Tag kann verwendet werden."
 
-#: ../plugins/customcollectionorders/cco_prefs.py:92
+#: ../plugins/customcollectionorders/cco_prefs.py:114
 msgid ""
 "Comma separated list of the tags to use for displaying single tracks as "
 "leaves in the tree. Tags are joined with a hyphen.\n"
 "Every tag can be used."
 msgstr ""
+"Kommagetrennte Liste der Tags, die für die Anzeige eines Titels verwendet "
+"werden sollen. Die Tags werden mit '-' verbunden.\n"
+"Jeder Tag kann verwendet werden."
 
-#: ../plugins/customcollectionorders/cco_prefs.py:96
+#: ../plugins/customcollectionorders/cco_prefs.py:118
 msgid "Name of your order"
-msgstr ""
+msgstr "Name des Filters"
 
-#: ../plugins/customcollectionorders/cco_prefs.py:97
+#: ../plugins/customcollectionorders/cco_prefs.py:119
 msgid "Tree Levels:"
-msgstr ""
+msgstr "Knoten:"
 
-#: ../plugins/customcollectionorders/cco_prefs.py:98
+#: ../plugins/customcollectionorders/cco_prefs.py:120
 msgid "Display:"
-msgstr ""
+msgstr "Anzeige:"
 
 #: ../plugins/daapclient/__init__.py:265 ../plugins/history/__init__.py:199
 #: ../plugins/history/__init__.py:247
@@ -3864,7 +3869,7 @@ msgstr "Pause durch Bildschirmschoner"
 
 #: ../plugins/shutdown/__init__.py:47
 msgid "Close Exaile after Playback"
-msgstr ""
+msgstr "Exaile nach der Wiedergabe beenden"
 
 #: ../plugins/shutdown/__init__.py:60 ../plugins/shutdown/PLUGININFO:3
 msgid "Shutdown after Playback"
@@ -3872,11 +3877,11 @@ msgstr "Herunterfahren nach Wiedergabe"
 
 #: ../plugins/shutdown/__init__.py:81
 msgid "Close scheduled"
-msgstr ""
+msgstr "Beenden geplant"
 
 #: ../plugins/shutdown/__init__.py:82
 msgid "Exaile will be closed at the end of playback."
-msgstr ""
+msgstr "Exaile wird beendet, wenn die Wiedergabe beendet wird."
 
 #: ../plugins/shutdown/__init__.py:88
 msgid "Shutdown scheduled"
@@ -3888,7 +3893,7 @@ msgstr "Der Computer wird am Ende der Wiedergabe heruntergefahren."
 
 #: ../plugins/shutdown/__init__.py:121
 msgid "Imminent Closing"
-msgstr ""
+msgstr "Bevorstehendes Beenden"
 
 #: ../plugins/shutdown/__init__.py:123
 msgid "Imminent Shutdown"
@@ -3897,7 +3902,7 @@ msgstr "Bevorstehendes Herunterfahren"
 #: ../plugins/shutdown/__init__.py:145
 #, python-format
 msgid "Exaile will be closed in %d seconds."
-msgstr ""
+msgstr "Exaile wird in %d Sekunden beendet."
 
 #: ../plugins/shutdown/__init__.py:147
 #, python-format
@@ -3914,7 +3919,7 @@ msgstr "Der Computer konnte nicht mit Hilfe von D-Bus heruntergefahren werden."
 
 #: ../plugins/shutdown/shutdown_preferences.py:5
 msgid "Shutdown"
-msgstr ""
+msgstr "Herunterfahren"
 
 #: ../plugins/somafm/__init__.py:81 ../plugins/somafm/__init__.py:176
 msgid "Contacting SomaFM server..."
@@ -4066,6 +4071,7 @@ msgid "Set BPM?"
 msgstr "BPM festlegen?"
 
 #: ../plugins/bpm/msg.ui:63
+#, python-format
 msgid "Set autodetected BPM on %s?"
 msgstr "Automatische Erkennung von BPM auf %s festlegen?"
 
@@ -4119,6 +4125,7 @@ msgstr "Pfad: "
 
 #: ../plugins/cd/cdprefs_pane.ui:201
 #: ../plugins/minimode/minimode_preferences.ui:131
+#, python-brace-format
 msgid ""
 "Every tag can be used with <b>$tag</b> or <b>${tag}</b>. Internal tags like "
 "<b>$__length</b> need to be specified with two leading underscores."
@@ -4136,9 +4143,13 @@ msgstr "Titel importieren als"
 msgid "Simple Console"
 msgstr "Einfache Konsole"
 
-#: ../plugins/customcollectionorders/cco_pane.ui:83
+#: ../plugins/customcollectionorders/cco_pane.ui:51
+msgid "Custom orders"
+msgstr "Benutzerdefinierte Filter"
+
+#: ../plugins/customcollectionorders/cco_pane.ui:77
 msgid "Add _Order"
-msgstr ""
+msgstr "Filter hinzufügen"
 
 #: ../plugins/daapclient/daapclient_prefs.ui:12
 msgid "Show IPv6 servers"
@@ -4532,6 +4543,7 @@ msgid "When main window is focused"
 msgstr "Wenn das Hauptfenster fokussiert ist"
 
 #: ../plugins/osd/osd_preferences.ui:69
+#, python-brace-format
 msgid ""
 "Every tag can be used with <b>$tag</b> or <b>${tag}</b>. Internal tags like "
 "<b>$__length</b> need to be specified with two leading underscores.\n"
@@ -4667,7 +4679,7 @@ msgstr "Wiedergabe beim Schließen des Bildschirmschoners fortsetzen"
 
 #: ../plugins/shutdown/shutdown_preferences.ui:20
 msgid "Timeout (in s):"
-msgstr ""
+msgstr "Wartezeit (in s):"
 
 #: ../plugins/shutdown/shutdown_preferences.ui:48
 msgid "Activate \"Close Exaile after Playback\" automatically"
@@ -4836,11 +4848,11 @@ msgstr ""
 
 #: ../plugins/customcollectionorders/PLUGININFO:3
 msgid "Custom Collection Orders"
-msgstr ""
+msgstr "Benutzerdefinierte Filter in der Bibliothek"
 
 #: ../plugins/customcollectionorders/PLUGININFO:4
 msgid "Users can add custom order to the collection panel"
-msgstr ""
+msgstr "Hinzufügen eigener Filter im Bibliotheks-Panel"
 
 #: ../plugins/customcollectionorders/PLUGININFO:5
 #: ../plugins/desktopcover/PLUGININFO:5 ../plugins/mainmenubutton/PLUGININFO:5
@@ -5194,8 +5206,7 @@ msgid ""
 "\n"
 "Requires: webkit2gtk and its typelib file"
 msgstr ""
-"Stellt Wikipedia-Informationen über den aktuellen Künstler zur "
-"Verfügung.\n"
+"Stellt Wikipedia-Informationen über den aktuellen Künstler zur Verfügung.\n"
 "\n"
 "Benötigt: webkit2gtk und seine typelib-Datei"
 
@@ -5264,6 +5275,9 @@ msgstr ""
 "Track-Tagging, last.fm-Scrobbeling, Unterstützung für tragbare Mediaplayer, "
 "Podcasts, Internetradio wie Icecast und Soma.FM, ReplayGain und die Ausgabe "
 "über ein sekundäres Ausgabegerät (ideal für DJs) umfassen und vieles mehr."
+
+#~ msgid "Remove after playback"
+#~ msgstr "Erst nach Wiedergabe entfernen"
 
 #~ msgid "Ready"
 #~ msgstr "Bereit"
