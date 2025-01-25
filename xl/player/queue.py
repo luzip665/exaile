@@ -189,7 +189,10 @@ class PlayQueue(playlist.Playlist):
                         return self[0]
             else:
                 # if queue isn't removing items, it's just a normal playlist
-                next = playlist.Playlist.get_next(self)
+                if self.current_playlist is not self:
+                    next = playlist.Playlist.get_current(self)
+                else:
+                    next = playlist.Playlist.get_next(self)
                 if next is not None:
                     return next
         if self.current_playlist is not self:
@@ -232,8 +235,11 @@ class PlayQueue(playlist.Playlist):
                         track = self[0]
                         self.current_position = 0
                 else:
-                    # next track is always normal playlist behavior
-                    track = super().next()
+                    if self.current_playlist is not self:
+                        track = playlist.Playlist.get_current(self)
+                    else:
+                        # next track is always normal playlist behavior
+                        track = super().next()
 
                 # reached the end of the internal queue, don't repeat and switch back to last playlist
                 if track is None:
