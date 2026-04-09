@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: exaile\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-21 14:03+1100\n"
-"PO-Revision-Date: 2025-12-08 18:00+0000\n"
+"PO-Revision-Date: 2026-04-09 15:09+0000\n"
 "Last-Translator: Robert Hrovat <robi74@gmail.com>\n"
 "Language-Team: Slovenian <https://hosted.weblate.org/projects/exaile/master/"
 "sl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 "X-Launchpad-Export-Date: 2014-09-09 07:47+0000\n"
 
 #: ../xl/covers.py:523 ../data/ui/trackproperties_dialog.ui:183
@@ -2518,11 +2518,11 @@ msgstr "Uporabi e-pošto za Popularimeter (samo MP3):"
 
 #: ../data/ui/preferences/collection.ui:131
 msgid "Write existing ratings to track files now"
-msgstr ""
+msgstr "Vpiši obstoječe ocene v datoteke sedaj"
 
 #: ../data/ui/preferences/collection.ui:156
 msgid "Use legacy tag mapping"
-msgstr ""
+msgstr "Uporabi zastarelo mapiranje značk"
 
 #: ../data/ui/preferences/collection.ui:171
 msgid ""
@@ -2530,10 +2530,14 @@ msgid ""
 "tags. From Exaile 4.1.3 the mapping is equivalent to MusicBrainz.\n"
 "Your can start migration here. After migration this feature will be disabled."
 msgstr ""
+"Uporabi zastarelo mapiranje značk s komentarji in hitrostjo za datoteke Ogg "
+"Vorbis in FLAC. Od Exaile različice 4.1.3 je to mapiranje enako kot na "
+"MusicBrainz. \n"
+"Migracijo lahko zažene tukaj, po njej pa se bo ta možnost izklopila."
 
 #: ../data/ui/preferences/collection.ui:186
 msgid "Migrate existing tempo and comment tags now"
-msgstr ""
+msgstr "Migriraj obstoječi tempo in značke komentarjev sedaj"
 
 #: ../data/ui/preferences/cover.ui:12
 msgid "Use covers from local files"
@@ -2596,7 +2600,7 @@ msgstr "Cevovod ponora po meri:"
 
 #: ../data/ui/preferences/playback.ui:160
 msgid "Show hidden devices"
-msgstr ""
+msgstr "Prikaži skrite naprave"
 
 #: ../data/ui/preferences/playback.ui:176
 msgid "Resume playback on start"
@@ -2618,7 +2622,7 @@ msgstr "Po predvajanju odstrani skladbo iz vrste"
 
 #: ../data/ui/preferences/playback.ui:237
 msgid "Remove track from queue after playback"
-msgstr ""
+msgstr "Po predvajanju odstrani skladbo iz vrste"
 
 #: ../data/ui/preferences/playback.ui:252
 #: ../plugins/quickbuttons/__init__.py:47
@@ -2907,7 +2911,7 @@ msgstr "Najvišja glasnost:"
 
 #: ../data/ui/widgets/info_dialog.ui:20
 msgid "Don't show this message again"
-msgstr ""
+msgstr "Tega sporočila ne prikaži več"
 
 #: ../data/ui/widgets/info_dialog.ui:79
 msgid ""
